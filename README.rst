@@ -6,8 +6,8 @@ ariane
     :target: http://codecov.io/github/debvortex/ariane?branch=develop
     :alt: Coverage Status
 
-.. image:: https://requires.io/github/debvortex/ariane/requirements.svg?branch=develop
-     :target: https://requires.io/github/debvortex/ariane/requirements/?branch=develop
+.. image:: https://requires.io/github/DebVortex/ariane/requirements.svg?branch=develop
+     :target: https://requires.io/github/DebVortex/ariane/requirements/?branch=develop
      :alt: Requirements Status
 
 A short description of the project.
