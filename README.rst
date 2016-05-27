@@ -7,8 +7,8 @@ ariane
     :alt: Coverage Status
 
 .. image:: https://requires.io/github/DebVortex/ariane/requirements.svg?branch=develop
-     :target: https://requires.io/github/DebVortex/ariane/requirements/?branch=develop
-     :alt: Requirements Status
+    :target: https://requires.io/github/DebVortex/ariane/requirements/?branch=develop
+    :alt: Requirements Status
 
 A short description of the project.
 
