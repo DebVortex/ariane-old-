@@ -67,7 +67,7 @@
 
         <script src="{% static "js/vendor/bootstrap.min.js" %}"></script>
 
-        <script src="{% static "js/main.js" %}"></script>
+        {% block script %}{% endblock %}
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
