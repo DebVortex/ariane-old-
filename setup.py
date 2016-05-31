@@ -19,7 +19,7 @@ requires = [
     'channels==0.14.0',
     'Django==1.9.6',
     'dj-database-url==0.4.1',
-    'django-braces==1.8.1',
+    'django-braces==1.9.0',
     'django-configurations==1.0',
     'django-crispy-forms==1.6.0',
     'django-grappelli==2.8.1',
