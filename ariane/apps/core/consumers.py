@@ -6,7 +6,7 @@ from channels.auth import channel_session_user, channel_session_user_from_http
 def ws_connect(message):
     if message.user.is_authenticated():
         Group(message.user.username).add(message.reply_channel)
-        Group(message.user.username).send({'text': 'Conected!'})
+        Group(message.user.username).send({'text': 'Connected!'})
     else:
         message.reply_channel.send({'text': 'Not authenticated.'})
 
@@ -15,8 +15,8 @@ def ws_connect(message):
 def ws_message(message):
     if message.user.is_authenticated():
         Group(message.user.username).send({
-            "text": "[{name}}] {message}".format(
-                user=message.user.username,
+            "text": "[{name}] {message}".format(
+                name=message.user.username,
                 message=message.content['text'],
             )
         })
