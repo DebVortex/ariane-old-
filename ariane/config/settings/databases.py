@@ -8,11 +8,8 @@ class Databases(object):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('PG_NAME', 'ariane'),
             'USER': os.environ.get('PG_USER', 'ariane'),
             'PASSWORD': os.environ.get('PG_PASSWORD', 'ariane'),
-            'HOST': os.environ.get('PG_HOST', '127.0.0.1'),
-            'PORT': os.environ.get('PG_PORT')
         }
     }
 
