@@ -10,6 +10,7 @@ class Databases(object):
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'USER': os.environ.get('PG_USER', 'ariane'),
             'PASSWORD': os.environ.get('PG_PASSWORD', 'ariane'),
+            'NAME': 'ariane'
         }
     }
 
