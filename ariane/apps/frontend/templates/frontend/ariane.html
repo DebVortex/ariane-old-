@@ -2,9 +2,6 @@
 {% load static from staticfiles %}
 
 {% block script %}
-  <script type="text/javascript">
-    var session_key = '{{ request.user.session_key }}'
-  </script>
   <script src="{% static "js/main.js" %}"></script>
 {% endblock %}
 
