@@ -1,18 +1,11 @@
-import os
+import dj_database_url
 from configurations import values
 
 
 class Databases(object):
     """Settings for PostgreSQL databases."""
 
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'USER': os.environ.get('PG_USER'),
-            'PASSWORD': os.environ.get('PG_PASSWORD'),
-            'NAME': 'ariane'
-        }
-    }
+    DATABASES = dj_database_url.config(env='DATABASE_URL')
 
     # Number of seconds database connections should persist for
     DATABASES['default']['CONN_MAX_AGE'] = values.IntegerValue(600, environ_prefix='',
