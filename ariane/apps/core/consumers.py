@@ -4,6 +4,16 @@ from channels.auth import channel_session_user, channel_session_user_from_http
 
 @channel_session_user_from_http
 def ws_connect(message):
+    """
+    Consumer for ``websocket.connect``.
+
+    If the provided user is not authenticated, a 'Not authenticated.' will be returned. Otherwise,
+    he will be added to a group and the text 'Connected!' is send.
+
+    Args:
+        message (Message): message containing the reply_channel. Also used to determine if the
+        user is logged in.
+    """
     if message.user.is_authenticated():
         Group(message.user.username).add(message.reply_channel)
         Group(message.user.username).send({'text': 'Connected!'})
@@ -13,6 +23,15 @@ def ws_connect(message):
 
 @channel_session_user
 def ws_message(message):
+    """
+    Consumer for ``websocket.receive``.
+
+    If the provided user is not authenticated, nothing happens. Otherwise, the provided message
+    will be returned.
+
+    Args:
+        message (Message): message containing the message to send back from the user.
+    """
     if message.user.is_authenticated():
         Group(message.user.username).send({
             "text": "[{name}] {message}".format(
@@ -24,4 +43,12 @@ def ws_message(message):
 
 @channel_session_user
 def ws_disconnect(message):
+    """
+    Consumer for ``websocket.disconnect``.
+
+    Removed the user from his group.
+
+    Args:
+        message (Message): message containing the user to remove from the Group.
+    """
     Group(message.user.username).discard(message.reply_channel)

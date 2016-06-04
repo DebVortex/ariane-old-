@@ -1,6 +1,6 @@
 from channels.routing import route
-from .consumers import ws_connect, ws_message, ws_disconnect
 
+from .consumers import ws_connect, ws_disconnect, ws_message
 
 channel_routing = [
     route("websocket.connect", ws_connect, path=r"/ws"),
