@@ -31,7 +31,7 @@ class TestWebsocketConsumer(ChannelTestCase):
     def test_ws_message_not_authenticated(self):
         """Test that sending to ws_connect returns noting if not connected."""
         client = HttpClient()
-        client.send_and_consume(u'websocket.disconnect')
+        client.send_and_consume(u'websocket.receive')
         assert not client.receive()
 
     def test_ws_message_authenticated(self):
@@ -45,8 +45,6 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         response = client.receive()
         assert response == {'text': "[Ada Lovelace] Ping!"}
-
-
 
     def test_ws_disconnect(self):
         """Test that disconnecting removes the reply_channel from the Group."""
