@@ -137,7 +137,7 @@ startapp:
 	echo "Don't forget to add 'ariane.apps."$$app_name".apps."$$app_name_title"Config' to INSTALLED_APPS in 'ariane.config/settings/common.py'!"
 
 test:
-	envdir envs/$(ENV) python -m pytest $(TEST_ARGS) tests/
+	envdir envs/test python -m pytest $(TEST_ARGS) tests/
 
 test-all:
 	tox

@@ -6,7 +6,7 @@ class Databases(object):
     """Settings for PostgreSQL databases."""
 
     DATABASES = {
-        'default': dj_database_url.config(env='DEFAULT_DATABASE_URL')
+        'default': dj_database_url.config(env='DATABASE_URL')
     }
 
     # Number of seconds database connections should persist for

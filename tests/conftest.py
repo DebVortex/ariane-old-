@@ -56,3 +56,31 @@ def tmp_media_root(request, settings):
     def cleanup():
         shutil.rmtree(settings.MEDIA_ROOT, ignore_errors=True)
     request.addfinalizer(cleanup)
+
+
+@pytest.fixture(scope='session')
+def password():
+    """Return the default test password."""
+    return "test"
+
+
+@pytest.fixture(scope='session')
+def username():
+    """Return the default test username."""
+    return "ada"
+
+
+@pytest.fixture(scope='session')
+def email():
+    """Return the default test email."""
+    return "ada@example.com"
+
+
+@pytest.fixture
+def login(client, username, email, password):
+    """Return the User instance after logging the user in."""
+    from django.contrib.auth import get_user_model
+    user = get_user_model().objects.create_user(
+        username, email="test@example.com", password=password)
+    assert client.login(username=username, password=password)
+    return user

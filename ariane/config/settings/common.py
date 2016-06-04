@@ -184,6 +184,10 @@ class Common(Configuration):
         'django.contrib.admindocs',
         'crispy_forms',
         'channels',
+
+        # project apps
+        'ariane.apps.core.apps.CoreConfig',
+        'ariane.apps.frontend.apps.FrontendConfig',
     )
 
     CACHES = values. DictValue({
@@ -201,3 +205,10 @@ class Common(Configuration):
     DEFAULT_FROM_EMAIL = values.EmailValue('max@max-brauer.de')
 
     SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "asgiref.inmemory.ChannelLayer",
+            "ROUTING": "ariane.apps.core.routing.channel_routing",
+        },
+    }
