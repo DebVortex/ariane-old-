@@ -31,7 +31,7 @@ class TestWebsocketConsumer(ChannelTestCase):
     def test_ws_message_not_authenticated(self):
         """Test that sending to ws_connect returns noting if not connected."""
         client = HttpClient()
-        client.send_and_consume(u'websocket.receive')
+        client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         assert not client.receive()
 
     def test_ws_message_authenticated(self):
