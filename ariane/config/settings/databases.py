@@ -5,7 +5,9 @@ from configurations import values
 class Databases(object):
     """Settings for PostgreSQL databases."""
 
-    DATABASES = dj_database_url.config(env='DATABASE_URL')
+    DATABASES = {
+        'default': dj_database_url.config(env='DATABASE_URL')
+    }
 
     # Number of seconds database connections should persist for
     DATABASES['default']['CONN_MAX_AGE'] = values.IntegerValue(600, environ_prefix='',
