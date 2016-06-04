@@ -1,11 +1,9 @@
 from channels import Group
 from channels.tests import ChannelTestCase, apply_routes
 from channels.tests.http import HttpClient
-
-from ariane.apps.core.routing import channel_routing
-
 from django.contrib.auth import get_user_model
 
+from ariane.apps.core.routing import channel_routing
 
 user_model = get_user_model()
 
