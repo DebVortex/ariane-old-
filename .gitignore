@@ -24,6 +24,7 @@ lib64
 # envdirs
 envs/*
 !envs/dev
+!envs/test
 
 # Django
 ariane/media/*

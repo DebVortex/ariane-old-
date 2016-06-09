@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+{% block script %}
+  <script src="{% static "js/main.js" %}"></script>
+{% endblock %}
+
+{% block content %}
+  <h1>Ariane</h1>
+  <div>
+    <form id="websocket-test">
+      <input id="input" placeholder="Send..." ><input type="submit" class="btn btn-success" value="Send">
+    </form>
+  </div>
+
+  <div id="messages"></div>
+{% endblock %}
