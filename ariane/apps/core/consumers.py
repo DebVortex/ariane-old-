@@ -15,8 +15,8 @@ def ws_connect(message):
         user is logged in.
     """
     if message.user.is_authenticated():
-        Group(message.user.username).add(message.reply_channel)
-        Group(message.user.username).send({'text': 'Connected!'})
+        Group('user-{}'.format(message.user.pk)).add(message.reply_channel)
+        Group('user-{}'.format(message.user.pk)).send({'text': 'Connected!'})
     else:
         message.reply_channel.send({'text': 'Not authenticated.'})
 
@@ -33,7 +33,7 @@ def ws_message(message):
         message (Message): message containing the message to send back from the user.
     """
     if message.user.is_authenticated():
-        Group(message.user.username).send({
+        Group('user-{}'.format(message.user.pk)).send({
             "text": "[{name}] {message}".format(
                 name=message.user.username,
                 message=message.content['text'],
@@ -51,4 +51,4 @@ def ws_disconnect(message):
     Args:
         message (Message): message containing the user to remove from the Group.
     """
-    Group(message.user.username).discard(message.reply_channel)
+    Group('user-{}'.format(message.user.pk)).discard(message.reply_channel)
