@@ -16,7 +16,7 @@ def read(*paths):
 extras_require = {}
 
 requires = [
-    'channels==0.14.0',
+    'channels==0.14.1',
     'Django==1.9.7',
     'dj-database-url==0.4.1',
     'django-braces==1.9.0',
