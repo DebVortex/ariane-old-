@@ -120,8 +120,8 @@ Before you submit a pull request, check that it meets these guidelines:
 Tips
 ====
 
-To run a subset of tests pass the :option:`-k` inside the :envvar:`TEST_ARGS`
-variable to the `:command:`test` command:
+To run a subset of tests pass the `-k` inside the :envvar:`TEST_ARGS`
+variable to the `test` command:
 
 ::
 
@@ -129,4 +129,4 @@ variable to the `:command:`test` command:
 
 The pytest documentation `explains
 <http://pytest.org/latest/example/markers.html#using-k-expr-to-select-tests-based-on-their-name>`_
-how to use the :option:`-k` option.
+how to use the `-k` option.

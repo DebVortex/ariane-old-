@@ -40,7 +40,8 @@ class TestWebsocketConsumer(ChannelTestCase):
         client = HttpClient()
         client.login(username=user.username, password='123')
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
-        assert client.reply_channel in Group('').channel_layer._groups.get(user.username)
+        assert client.reply_channel in Group('').channel_layer._groups.get(
+            'user-{}'.format(user.pk))
         client.receive()  # Drop connected message
         client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         response = client.receive()
@@ -52,7 +53,8 @@ class TestWebsocketConsumer(ChannelTestCase):
         client = HttpClient()
         client.login(username=user.username, password='123')
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
-        assert client.reply_channel in Group('').channel_layer._groups.get(user.username)
+        assert client.reply_channel in Group('').channel_layer._groups.get(
+            'user-{}'.format(user.pk))
         client.receive()  # Drop connected message
         client.send_and_consume(u'websocket.disconnect')
         assert not Group('').channel_layer._groups
