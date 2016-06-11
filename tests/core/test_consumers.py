@@ -45,7 +45,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.receive()  # Drop connected message
         client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         response = client.receive()
-        assert response == {'text': "[Ada Lovelace] Ping!"}
+        assert response == {'text': "Ping!"}
 
     def test_ws_disconnect(self):
         """Test that disconnecting removes the reply_channel from the Group."""
