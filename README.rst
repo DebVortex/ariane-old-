@@ -2,7 +2,7 @@
 ariane
 *******************************
 
-.. image:: https://img.shields.io/codecov/c/token/<YOUR_TOKEN>/github/debvortex/ariane/develop.svg
+.. image:: https://img.shields.io/codecov/c/github/DebVortex/ariane/develop.svg
     :target: http://codecov.io/github/debvortex/ariane?branch=develop
     :alt: Coverage Status
 
