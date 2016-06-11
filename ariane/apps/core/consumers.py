@@ -34,10 +34,10 @@ def ws_message(message):
     """
     if message.user.is_authenticated():
         Group('user-{}'.format(message.user.pk)).send({
-            "text": "[{name}] {message}".format(
+            "text": "{message}".format(
                 name=message.user.username,
-                message=message.content['text'],
-            )
+                message=message.content['text']
+            ),
         })
 
 
