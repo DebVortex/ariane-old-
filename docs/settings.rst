@@ -162,6 +162,28 @@ List of general Django settings from
         | zone for this installation. See
         | the `list of time zones <https://en.wikipedia.org/wiki/List_of_tz_database_time_zones>`_.
 
+Ariane
+======
+
+List of all custom settings for ariane. The ariane settings are in
+:py:class:`ariane.config.settings.common.Ariane`.
+
+The following class inherit from it:
+
+* :py:class:`ariane.config.settings.commong.Ariane`
+
+.. list-table::
+    :header-rows: 1
+
+    * - Setting
+      - Default
+      - Env Variable
+      - Description
+    * - ``ARIANE_SUPPORTED_LANGUAGES``
+      - ``['en-GB', 'de-DE']``
+      - ``DJANGO_ARIANE_SUPPORTED_LANGUAGES``
+      - | A list of all languages ariane supports.
+
 Database
 ========
 

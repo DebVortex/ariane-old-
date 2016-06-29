@@ -16,7 +16,11 @@ class BaseDir(object):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
-class Common(Configuration):
+class Ariane(object):
+    ARIANE_SUPPORTED_LANGUAGES = values.ListValue(['en-GB', 'de-DE'])
+
+
+class Common(Configuration, Ariane):
     """Common configuration base class."""
 
     SECRET_KEY = '(_j4e0=pbe(b+b1$^ch_48be0=gszglcgfzz^dy=(gnx=@m*b7'
