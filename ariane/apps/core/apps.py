@@ -7,3 +7,8 @@ class CoreConfig(AppConfig):
 
     name = 'ariane.apps.core'
     verbose_name = _("Core")
+
+    def ready(self):
+        """Once the ariane core app is loaded, discover and load all brain modules."""
+        from django.utils.module_loading import autodiscover_modules
+        autodiscover_modules('brain')
