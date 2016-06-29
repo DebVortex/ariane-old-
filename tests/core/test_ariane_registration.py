@@ -6,7 +6,6 @@ class TestArianeAppRegistration:
 
     def test_register(self, clean_ariane, languages):
         """Test the register function."""
-
         def example_func():
             pass
 

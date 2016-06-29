@@ -28,7 +28,10 @@ class TestAriane:
         ]
     )
     def test_register(self, clean_ariane, languages, extra_languages, error):
-        """
+        """Test that register works as expectet.
+
+        The register function of ariane should return a AttributeError, if a keyword is already
+        used or the provided language is not supported.
         """
         def test_func():
             pass

@@ -13,7 +13,7 @@ def clean_ariane(settings):
 
 @pytest.fixture
 def languages(settings):
-    """Languages and keywords used for register."""
+    """Return languages and keywords used for register."""
     lngs = {key: ['foo', 'bar'] for key in settings.ARIANE_SUPPORTED_LANGUAGES}
     return lngs
 

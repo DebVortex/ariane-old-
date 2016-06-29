@@ -17,6 +17,8 @@ class BaseDir(object):
 
 
 class Ariane(object):
+    """Ariane configuration class."""
+
     ARIANE_SUPPORTED_LANGUAGES = values.ListValue(['en-GB', 'de-DE'])
 
 

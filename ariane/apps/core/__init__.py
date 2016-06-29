@@ -5,8 +5,7 @@ class Ariane(object):
     """Main class for Ariane, the voice controlled assitant."""
 
     def __init__(self):
-        """
-        Instantiate Ariane.
+        """Instantiate Ariane.
 
         This sets up the brain of Ariane. The brain is a dictionary, containing
         each supported language as key. The value, is a dictionary itself and
@@ -19,8 +18,7 @@ class Ariane(object):
         self.js_files = []
 
     def register(self, languages, func):
-        """
-        Register a new function to Ariane.
+        """Register a new function to Ariane.
 
         Args:
             languages (dict): A dictionary, containing a supported languages as key and a list of
@@ -41,9 +39,7 @@ ariane = Ariane()
 
 
 def register(languages, func):
-    """
-    Register function that will be called inside the ariane.py files to register
-    custom functions.
+    """Register function that will be called inside the brain.py.
 
     Args:
         languages (dict): A dictionary, containing a supported languages as key and a list of
@@ -55,8 +51,7 @@ def register(languages, func):
 
 
 def register_js(js_file):
-    """
-    Register a JS file that needs to be renderd in the frontend for the app to work.
+    """Register a JS file that needs to be renderd in the frontend for the app to work.
 
     Args:
         js_file (string): The filepath that will be renderes in the template, using the
