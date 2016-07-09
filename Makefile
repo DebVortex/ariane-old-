@@ -102,6 +102,7 @@ develop:
 	pip install -U pip setuptools wheel
 	pip install -U -c requirements/constraints.pip -e .
 	pip install -U -c requirements/constraints.pip -r requirements/dev.pip
+	npm install
 
 dist: clean
 	python setup.py sdist bdist_wheel
@@ -139,7 +140,10 @@ startapp:
 test:
 	envdir envs/test python -m pytest $(TEST_ARGS) tests/
 
-test-all:
+test-js:
+	npm test
+
+test-all: test-js
 	tox
 
 test-upload:
