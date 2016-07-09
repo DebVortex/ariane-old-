@@ -34,6 +34,7 @@ function Ariane(lang) {
                 onend: this.start_recognition
             }
         );
+        return true;
     };
 }
 
