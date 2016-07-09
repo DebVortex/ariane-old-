@@ -8,6 +8,8 @@ exclude .bumpversion.cfg
 exclude .editorconfig
 exclude pep257.sh
 exclude codecov.yml
+exclude Gruntfile.js
+exclude package.json
 
 recursive-include docs *.rst .gitkeep conf.py Makefile make.bat
 recursive-include requirements *.pip
