@@ -30,5 +30,9 @@
   "bugs": {
     "url": "https://github.com/DebVortex/ariane/issues"
   },
-  "homepage": "https://github.com/DebVortex/ariane#readme"
+  "homepage": "https://github.com/DebVortex/ariane#readme",
+  "dependencies": {
+    "foundation": "^4.2.1-1",
+    "knockout": "^3.4.0"
+  }
 }
