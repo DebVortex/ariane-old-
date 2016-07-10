@@ -15,8 +15,8 @@ endef
 $(eval $(call CMDS, $(cmd)))
 
 .PHONY: help clean clean-build clean-docs clean-pyc clean-test cmd coverage coverage-html \
-    create-db develop docs isort migrate open-docs serve-docs runserver shell startapp test \
-    test-all test-upload upload
+	coverage-js coverage-js-html create-db develop docs isort migrate open-docs serve-docs \
+	runserver shell show-js-coverage startapp test test-all test-js test-upload upload
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -29,6 +29,8 @@ help:
 	@echo "  cmd=<manage.py command>  to use any other manage.py command"
 	@echo "  coverage                 to generate a coverage report with the default Python"
 	@echo "  coverage-html            to generate and open a HTML coverage report with the default Python"
+	@echo "  coverage-js              to generate a coverage report for the javascript"
+	@echo "  coverage-js-html         to generate and open a HTML coverage report for the javascript"
 	@echo "  create-db                to create a new PostgreSQL database"
 	@echo "  create-db-user           to create a new PostgreSQL user"
 	@echo "  drop-db                  to drop the PostgreSQL database"
@@ -44,7 +46,7 @@ help:
 	@echo "  shell                    to start a Python interactive interpreter"
 	@echo "  startapp                 to create a new Django app"
 	@echo "  test                     to run unit tests quickly with the default Python"
-	@echo "  test-all                 to run unit tests on every Python version with tox"
+	@echo "  test-all                 to run javascript unit test and unit tests on every Python version with tox"
 	@echo "  test-upload              to upload a release to test PyPI using twine"
 	@echo "  upload                   to upload a release using twine"
 
@@ -85,6 +87,12 @@ coverage:
 coverage-html: coverage
 	coverage html
 	python -c "import os, webbrowser; webbrowser.open('file://{}/htmlcov/index.html'.format(os.getcwd()))"
+
+coverage-js:
+	npm test
+
+coverage-js-html: coverage-js
+	python -c "import os, webbrowser; webbrowser.open('file://{}/jsreport/html-coverage/index.html'.format(os.getcwd()))"
 
 create-db:
 	envdir envs/$(ENV) createdb -U ariane -l en_US.utf-8 -E utf-8 -O ariane -T template0 -e ariane
@@ -140,11 +148,11 @@ startapp:
 test:
 	envdir envs/test python -m pytest $(TEST_ARGS) tests/
 
-test-js:
-	npm test
-
-test-all: test-js
+test-all: coverage-js
 	tox
+
+test-js:
+	python -c "import os, webbrowser; webbrowser.open('file://{}/tests/jstests/index.html'.format(os.getcwd()))"
 
 test-upload:
 	twine upload -r test -s dist/*
