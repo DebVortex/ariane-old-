@@ -14,9 +14,9 @@ endef
 
 $(eval $(call CMDS, $(cmd)))
 
-.PHONY: help clean clean-build clean-docs clean-pyc clean-test cmd coverage coverage-html \
-	coverage-js coverage-js-html create-db develop docs isort migrate open-docs serve-docs \
-	runserver shell show-js-coverage startapp test test-all test-js test-upload upload
+.PHONY: help clean clean-build clean-docs clean-pyc clean-test cmd compile-vendor coverage \
+	coverage-html coverage-js coverage-js-html create-db develop docs isort migrate open-docs \
+	serve-docs runserver shell show-js-coverage startapp test test-all test-js test-upload upload
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -27,6 +27,8 @@ help:
 	@echo "  clean-pyc                to remove Python file artifacts"
 	@echo "  clean-test               to remove test and coverage artifacts"
 	@echo "  cmd=<manage.py command>  to use any other manage.py command"
+	@echo "  compile-scss             to compile the scss files into a single css file."
+	@echo "  compile-vendor           to compile and copy vendor javascript"
 	@echo "  coverage                 to generate a coverage report with the default Python"
 	@echo "  coverage-html            to generate and open a HTML coverage report with the default Python"
 	@echo "  coverage-js              to generate a coverage report for the javascript"
@@ -79,6 +81,13 @@ clean-test:
 
 cmd:
 	@echo "  cmd                       Please use 'make cmd=<manage.py command>'"
+
+compile-scss:
+	node_modules/.bin/grunt sass
+
+compile-vendor:
+	node_modules/.bin/modernizr -c node_modules/modernizr/lib/config-all.json -d node_modules/modernizr/
+	node_modules/.bin/grunt
 
 coverage:
 	envdir envs/$(ENV) coverage run -m pytest $(TEST_ARGS) tests/

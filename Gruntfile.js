@@ -1,10 +1,13 @@
-var files = ['ariane/static/js/main.js'];
+var main_file = 'ariane/static/js/main.js';
 
 module.exports = function(grunt) {
 
   grunt.initConfig({
+
+
+
     jshint: {
-      files: ['Gruntfile.js'].concat(files).concat(['tests/jstests/tests.js']),
+      files: ['Gruntfile.js', main_file, 'tests/jstests/tests.js'],
       options: {
         globals: {
           jQuery: true
@@ -17,7 +20,7 @@ module.exports = function(grunt) {
         '--web-security': 'no',
         coverage: {
           disposeCollector: true,
-          src: files,
+          src: [main_file],
           instrumentedFiles: 'temp/',
           htmlReport: 'jsreport/html-coverage',
           lcovReport: 'jsreport/',
@@ -28,17 +31,42 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: files,
-      tasks: ['jshint', 'qunit'],
+      files: [],
+      tasks: ['sass'],
       options: {
         'atBegin': true,
       }
+    },
+
+    uglify: {
+      compile_vendor: {
+        files: {
+          'ariane/static/js/vendor/compiled.js': [
+            'node_modules/modernizr/modernizr.js',
+            'node_modules/zepto/zepto.min.js',
+            'node_modules/knockout/build/output/knockout-latest.js'
+          ]
+        }
+      }
+    },
+
+    sass: {
+      dist: {
+        options: {trace: true},
+        files: {
+          'ariane/static/css/main.css': 'ariane/static/scss/main.scss',
+        }
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-qunit-istanbul');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-sass');
+
 
   grunt.registerTask('default', ['jshint', 'qunit']);
 
