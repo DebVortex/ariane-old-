@@ -10,6 +10,7 @@ exclude pep257.sh
 exclude codecov.yml
 exclude Gruntfile.js
 exclude package.json
+exclude Procfile
 
 recursive-include docs *.rst .gitkeep conf.py Makefile make.bat
 recursive-include requirements *.pip
