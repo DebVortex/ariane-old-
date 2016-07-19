@@ -16,9 +16,9 @@ def read(*paths):
 extras_require = {}
 
 requires = [
-    'asgiref==0.13.3',
-    'channels==0.14.1',
-    'Django==1.9.7',
+    'asgiref==0.14.0',
+    'channels==0.16.1',
+    'Django==1.9.8',
     'dj-database-url==0.4.1',
     'django-braces==1.9.0',
     'django-configurations==1.0',
@@ -26,8 +26,8 @@ requires = [
     'django-grappelli==2.8.1',
     'django-model-utils==2.5',
     'envdir==0.7',
-    'psycopg2==2.6.1',
-    'pytz==2016.4',
+    'psycopg2==2.6.2',
+    'pytz==2016.6.1',
 ]
 
 setup(
