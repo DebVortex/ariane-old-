@@ -21,7 +21,7 @@ requires = [
     'Django==1.9.8',
     'dj-database-url==0.4.1',
     'django-braces==1.9.0',
-    'django-configurations==1.0',
+    'django-configurations==2.0',
     'django-crispy-forms==1.6.0',
     'django-grappelli==2.8.1',
     'django-model-utils==2.5',
