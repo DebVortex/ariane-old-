@@ -58,6 +58,7 @@ def register_js(js_file, template_id=None):
             {% static 'js_file' %}.
 
     Kwargs:
-        template_id (string): The id used for this template in the HTML.
+        template_id (string): The id used for the script tag in html. If provided, the type will
+        be set to text/html.
     """
-    ariane.js_files.append((template_id, js_file))
+    ariane.js_files.append((js_file, template_id))
