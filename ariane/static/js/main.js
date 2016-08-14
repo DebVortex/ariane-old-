@@ -5,17 +5,22 @@ var languages = {
 
 function Ariane(lang) {
     self = this;
+
+    self.active = ko.observable(false);
     self.listening = ko.observable(false);
+    self.speaking = ko.observable(false);
 
     self.leftTemplate = ko.observable('empty');
     self.leftData = ko.observable();
+
     self.centerTopTemplate = ko.observable('empty');
     self.centerTopData = ko.observable();
+
     self.centerBottomTemplate = ko.observable('empty');
     self.centerBottomData = ko.observable();
+
     self.rightTemplate = ko.observable('empty');
     self.rightData = ko.observable();
-    self.active = ko.observable(false);
 
     self.message = ko.observable('');
 
@@ -29,12 +34,22 @@ function Ariane(lang) {
         self._rec.stop();
     };
 
+    self.start_speaking = function() {
+        self.speaking(true);
+        self.stop_recognition();
+    };
+
+    self.stop_speaking = function() {
+        self.speaking(false);
+        self.start_recognition();
+    };
+
     self.say = function(text) {
         responsiveVoice.speak(
             text,
             self.voice,
             {
-                onstart: self.stop_recognition,
+                onstart: self.start_speaking,
                 onend: self.start_recognition
             }
         );
