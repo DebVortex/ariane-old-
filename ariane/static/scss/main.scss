@@ -144,9 +144,9 @@ html, body, #content {
   padding-right: 1em;
   padding-top: 0.6em;
   padding-bottom: 0.6em;
-  margin-top: 2em;
+  margin-top: 1em;
   border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
-  min-height: 140px;
+  min-height: 180px;
   font-size: 120%;
   .active & {
     border-color: $ARIANE_BACKGROUND;

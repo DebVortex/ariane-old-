@@ -21,6 +21,8 @@ function Ariane(lang) {
 
     self.message = ko.observable('');
 
+    self.first_connection = true;
+
     self.start_recognition = function() {
         self.listening(true);
         self._rec.start();
@@ -51,6 +53,19 @@ function Ariane(lang) {
             }
         );
         return true;
+    };
+
+    self.dispatch_message = function(e) {
+        data = JSON.parse(e.data);
+        object_keys(data).forEach(function (key) {
+            if (key !== 'info') {
+                func = window;
+                key.split('.').forEach(function (sub_key) {
+                    func = func[sub_key];
+                });
+                func(data[key]);
+            }
+        });
     };
 
     self.initialize = function() {self._initialize.knockout();};
@@ -103,8 +118,32 @@ function Ariane(lang) {
                 $('.first_arc').removeClass('invis_arc');
                 setTimeout(function() {
                     $('.first_arc').addClass('animated');
-                    self.active(true);
-                    self.message('Connection established. Ariane is now active.');
+                    self.socket = new ReconnectingWebSocket('ws://' + window.location.host + '/ws');
+                    self._rec.onresult = function(e) {
+                        message = e.results[e.results.length -1];
+                        transcript = message[0].transcript;
+                        console.log(transcript);
+                        console.log(transcript.indexOf('ari'));
+                        if (transcript.toLowerCase().indexOf('ari') !== -1) {
+                            console.log("sending");
+                            self.socket.send(transcript);
+                        }
+                    };
+                    self.socket.onopen = function() {
+                        self.active(true);
+                        if (self.first_connection) {
+                            self.message('Connection established. Ariane is now active.');
+                            self.first_connection = false;
+                        } else {
+                            self.message('Successfully reconnected.');
+                        }
+                    };
+                    self.socket.onclose = function() {
+                        self.active(false);
+                        self.message('Connection lost. Trying to reconnect...');
+                    };
+                    self.socket.onmessage = self.dispatch_message;
+                    self.start_recognition();
                 }, initializationTimeout);
             }, initializationTimeout);
         }
