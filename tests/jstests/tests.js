@@ -36,6 +36,14 @@ QUnit.test("Test start/stop speaking & speech recognition", function( assert ) {
     assert.notOk(this.ariane.speaking());
 });
 
+QUnit.test("Test dispatch_message", function ( assert ) {
+    window.testObj = new testObj();
+    assert.notOk(testObj.called);
+    test_data = {'data': '{"testObj.call": "foo", "info": "bar"}'};
+    this.ariane.dispatch_message(test_data);
+    assert.notOk(testObj.called);
+});
+
 QUnit.test("Test say of Ariane (using responsive voice internally)", function( assert ) {
     assert.expect(0);
     this.ariane.say("Hi there!");
