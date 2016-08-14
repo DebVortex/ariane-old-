@@ -31,7 +31,7 @@ ko.bindingHandlers.lbylText = {
         // Set up any initial state, event handlers, etc. here
         value = valueAccessor();
         $(element).lbyl({
-            content: value,
+            content: value(),
         });
 
     },
@@ -41,7 +41,7 @@ ko.bindingHandlers.lbylText = {
         // Update the DOM element based on the supplied values here.
         value = valueAccessor();
         $(element).lbyl({
-            content: value,
+            content: value(),
         });
     }
 };
