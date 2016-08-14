@@ -44,7 +44,8 @@ module.exports = function(grunt) {
             'node_modules/zepto/dist/zepto.min.js',
             'node_modules/zepto/src/fx.js',
             'node_modules/zepto/src/fx_methods.js',
-            'node_modules/knockout/build/output/knockout-latest.js'
+            'node_modules/knockout/build/output/knockout-latest.js',
+            'node_modules/reconnectingwebsocket/reconnecting-websocket.min.js'
           ]
         }
       }

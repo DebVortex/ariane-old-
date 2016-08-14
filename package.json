@@ -37,6 +37,7 @@
     "foundation-sites": "^6.2.3",
     "knockout": "^3.4.0",
     "modernizr": "^3.3.1",
+    "reconnectingwebsocket": "^1.0.0",
     "zepto": "^1.0.1"
   }
 }
