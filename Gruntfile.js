@@ -42,6 +42,8 @@ module.exports = function(grunt) {
           'ariane/static/js/vendor/compiled.js': [
             'node_modules/modernizr/modernizr.js',
             'node_modules/zepto/dist/zepto.min.js',
+            'node_modules/zepto/src/fx.js',
+            'node_modules/zepto/src/fx_methods.js',
             'node_modules/knockout/build/output/knockout-latest.js'
           ]
         }
