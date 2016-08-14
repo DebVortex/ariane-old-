@@ -15,6 +15,27 @@ QUnit.test("Test start/stop speech recognition", function( assert ) {
     assert.notOk(this.ariane.listening());
 });
 
+QUnit.test("Test start/stop speaking & speech recognition", function( assert ) {
+    assert.notOk(this.ariane.listening());
+    assert.notOk(this.ariane.speaking());
+
+    this.ariane.start_recognition();
+    assert.ok(this.ariane.listening());
+    assert.notOk(this.ariane.speaking());
+
+    this.ariane.start_speaking();
+    assert.notOk(this.ariane.listening());
+    assert.ok(this.ariane.speaking());
+
+    this.ariane.stop_speaking();
+    assert.notOk(this.ariane.speaking());
+    assert.ok(this.ariane.listening());
+
+    this.ariane.stop_recognition();
+    assert.notOk(this.ariane.listening());
+    assert.notOk(this.ariane.speaking());
+});
+
 QUnit.test("Test say of Ariane (using responsive voice internally)", function( assert ) {
     assert.expect(0);
     this.ariane.say("Hi there!");
