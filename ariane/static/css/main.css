@@ -4,6 +4,47 @@
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
+@-moz-keyframes rotate_clockwise {
+  100% {
+    -moz-transform: rotate(360deg); } }
+@-webkit-keyframes rotate_clockwise {
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@keyframes rotate_clockwise {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg); } }
+@-moz-keyframes rotate_counterclockwise {
+  100% {
+    -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes rotate_counterclockwise {
+  100% {
+    -webkit-transform: rotate(-360deg); } }
+@keyframes rotate_counterclockwise {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg); } }
+@-moz-keyframes pulsing {
+  0% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
+  50% {
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
+  100% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
+@-webkit-keyframes pulsing {
+  0% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
+  50% {
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
+  100% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
+@keyframes pulsing {
+  0% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
+  50% {
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
+  100% {
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Set default font family to sans-serif.
@@ -1191,56 +1232,17 @@ button {
 .clearfix::after {
   clear: both; }
 
-@-moz-keyframes rotate_clockwise {
-  100% {
-    -moz-transform: rotate(360deg); } }
-@-webkit-keyframes rotate_clockwise {
-  100% {
-    -webkit-transform: rotate(360deg); } }
-@keyframes rotate_clockwise {
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
-@-moz-keyframes rotate_counterclockwise {
-  100% {
-    -moz-transform: rotate(-360deg); } }
-@-webkit-keyframes rotate_counterclockwise {
-  100% {
-    -webkit-transform: rotate(-360deg); } }
-@keyframes rotate_counterclockwise {
-  100% {
-    -webkit-transform: rotate(-360deg);
-    transform: rotate(-360deg); } }
-@-moz-keyframes pulsing {
-  0% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; }
-  50% {
-    box-shadow: 0px 0px 100px 30px #A3DBE3; }
-  100% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
-@-webkit-keyframes pulsing {
-  0% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; }
-  50% {
-    box-shadow: 0px 0px 100px 30px #A3DBE3; }
-  100% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
-@keyframes pulsing {
-  0% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; }
-  50% {
-    box-shadow: 0px 0px 100px 30px #A3DBE3; }
-  100% {
-    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
 * {
-  font-family: 'Rajdhani', sans-serif; }
+  font-family: 'VT323', monospace; }
 
 html, body, #content {
   height: 100%;
   background-color: #000000;
   overflow: hidden;
-  color: #A3DBE3; }
+  color: #CCCCCC; }
 
+#content.active {
+  color: #A3DBE3; }
 #content .row {
   height: 100%;
   width: 100%;
@@ -1272,7 +1274,7 @@ html, body, #content {
       border-top-color: transparent; }
     #ariane .first_arc.animated {
       animation: rotate_clockwise 10s linear infinite; }
-  #ariane.active .first_arc {
+  .active #ariane .first_arc {
     border-top-color: #A3DBE3; }
   #ariane .second_arc {
     width: 130px;
@@ -1284,7 +1286,7 @@ html, body, #content {
       border-right-color: transparent; }
     #ariane .second_arc.animated {
       animation: rotate_counterclockwise 5s linear infinite; }
-  #ariane.active .second_arc {
+  .active #ariane .second_arc {
     border-left-color: #A3DBE3;
     border-right-color: #A3DBE3; }
   #ariane .third_arc {
@@ -1297,7 +1299,7 @@ html, body, #content {
       border-bottom-color: transparent; }
     #ariane .third_arc.animated {
       animation: rotate_clockwise 2s linear infinite; }
-  #ariane.active .third_arc {
+  .active #ariane .third_arc {
     border-top-color: #A3DBE3;
     border-bottom-color: #A3DBE3; }
   #ariane .fourth_arc {
@@ -1310,7 +1312,7 @@ html, body, #content {
       border-top-color: transparent; }
     #ariane .fourth_arc.animated {
       animation: rotate_counterclockwise 3s linear infinite; }
-  #ariane.active .fourth_arc {
+  .active #ariane .fourth_arc {
     border-left-color: #A3DBE3;
     border-top-color: #A3DBE3; }
   #ariane .core {
@@ -1327,13 +1329,13 @@ html, body, #content {
     -o-transition: background 1s linear;
     -webkit-transition: background 1s linear;
     transition: background 1s linear; }
-  #ariane.active .core {
+  .active #ariane .core {
     background-color: #A3DBE3;
     border-color: #A3DBE3;
     box-shadow: 0px 0px 85px 15px #A3DBE3; }
-  #ariane.active.listening .core {
+  .active.listening #ariane .core {
     animation: pulsing 3s linear infinite; }
-  #ariane.active.speaking .core {
+  .active.speaking #ariane .core {
     animation: pulsing 1s linear infinite; }
 
 .info-text-box {
@@ -1342,13 +1344,10 @@ html, body, #content {
   padding-top: 0.6em;
   padding-bottom: 0.6em;
   margin-top: 2em;
-  border: 1px solid #A3DBE3; }
-
-.info-text-box {
-  min-height: 46px;
-  -moz-transition: width 500ms;
-  -o-transition: width 500ms;
-  -webkit-transition: width 500ms;
-  transition: width 500ms; }
+  border: 1px solid #CCCCCC;
+  min-height: 140px;
+  font-size: 120%; }
+  .active .info-text-box {
+    border-color: #A3DBE3; }
 
 /*# sourceMappingURL=main.css.map */

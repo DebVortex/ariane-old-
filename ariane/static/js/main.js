@@ -13,11 +13,8 @@ function Ariane(lang) {
     self.leftTemplate = ko.observable('empty');
     self.leftData = ko.observable();
 
-    self.centerTopTemplate = ko.observable('empty');
-    self.centerTopData = ko.observable();
-
-    self.centerBottomTemplate = ko.observable('empty');
-    self.centerBottomData = ko.observable();
+    self.centerTemplate = ko.observable('empty');
+    self.centerData = ko.observable();
 
     self.rightTemplate = ko.observable('empty');
     self.rightData = ko.observable();
@@ -66,8 +63,7 @@ function Ariane(lang) {
     self._initialize = {
         knockout: function() {
             ko.applyBindings(self);
-            self.centerTopData({'text': 'Initializing user interface...'});
-            self.centerTopTemplate('infoText');
+            self.message('Initializing user interface...');
             setTimeout(function() {
                 $('.fourth_arc').removeClass('invis_arc');
                 setTimeout(function() {
@@ -77,7 +73,7 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         voice: function() {
-            self.centerTopData({'text': 'Initializing language...'});
+            self.message('Initializing language...');
             setTimeout(function() {
                 $('.third_arc').removeClass('invis_arc');
                 self.voice = languages[lang];
@@ -88,7 +84,7 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         speechRecognition: function() {
-            self.centerTopData({'text': 'Initializing speech recognition...'});
+            self.message('Initializing speech recognition...');
             setTimeout(function() {
                 $('.second_arc').removeClass('invis_arc');
                 self._rec = new webkitSpeechRecognition();
@@ -102,14 +98,13 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         websocket: function() {
-            self.centerTopData({'text': 'Establishing connection...'});
+            self.message('Establishing connection...');
             setTimeout(function() {
                 $('.first_arc').removeClass('invis_arc');
                 setTimeout(function() {
                     $('.first_arc').addClass('animated');
                     self.active(true);
-                    self.centerTopTemplate('empty');
-                    self.centerTopData({});
+                    self.message('Connection established. Ariane is now active.');
                 }, initializationTimeout);
             }, initializationTimeout);
         }

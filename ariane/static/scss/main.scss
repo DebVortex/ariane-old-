@@ -1,5 +1,8 @@
 @import "../../../node_modules/foundation-sites/scss/foundation";
 
+@import "components/settings";
+@import "components/mixins";
+
 @include foundation-global-styles;
 @include foundation-flex-classes;
 @include foundation-flex-grid;
@@ -7,21 +10,22 @@
 @include foundation-visibility-classes;
 @include foundation-float-classes;
 
-@import "components/settings";
-@import "components/mixins";
 
 * {
-  font-family: 'Rajdhani', sans-serif;
+  font-family: 'VT323', monospace;
 }
 
 html, body, #content {
   height: 100%;
   background-color: #000000;
   overflow: hidden;
-  color: $ARIANE_BACKGROUND;
+  color: $ARIANE_BACKGROUND_INACTIVE;
 }
 
 #content {
+  &.active {
+    color: $ARIANE_BACKGROUND;
+  }
   .row {
     height: 100%;
     width: 100%;
@@ -55,7 +59,7 @@ html, body, #content {
       animation: rotate_clockwise 10s linear infinite;
     }
   }
-  &.active .first_arc {
+  .active & .first_arc {
     border-top-color: $ARIANE_BACKGROUND;
   }
 
@@ -72,7 +76,7 @@ html, body, #content {
       animation: rotate_counterclockwise 5s linear infinite;
     }
   }
-  &.active .second_arc {
+  .active & .second_arc {
     border-left-color: $ARIANE_BACKGROUND;
     border-right-color: $ARIANE_BACKGROUND;
   }
@@ -90,7 +94,7 @@ html, body, #content {
       animation: rotate_clockwise 2s linear infinite;
     }
   }
-  &.active .third_arc {
+  .active & .third_arc {
     border-top-color: $ARIANE_BACKGROUND;
     border-bottom-color: $ARIANE_BACKGROUND;
   }
@@ -108,7 +112,7 @@ html, body, #content {
       animation: rotate_counterclockwise 3s linear infinite;
     }
   }
-  &.active .fourth_arc {
+  .active & .fourth_arc {
     border-left-color: $ARIANE_BACKGROUND;
     border-top-color: $ARIANE_BACKGROUND;
   }
@@ -122,15 +126,15 @@ html, body, #content {
     box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND_INACTIVE;
     @include transition(background 1s linear);
   }
-  &.active .core {
+  .active & .core {
     background-color: $ARIANE_BACKGROUND;
     border-color: $ARIANE_BACKGROUND;
     box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;
   }
-  &.active.listening .core {
+  .active.listening & .core {
     animation: pulsing 3s linear infinite;
   }
-  &.active.speaking .core {
+  .active.speaking & .core {
     animation: pulsing 1s linear infinite;
   }
 }
@@ -141,10 +145,10 @@ html, body, #content {
   padding-top: 0.6em;
   padding-bottom: 0.6em;
   margin-top: 2em;
-  border: 1px solid $ARIANE_BACKGROUND;
-}
-
-.info-text-box {
-  min-height: 46px;
-  @include transition(width 500ms);
+  border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
+  min-height: 140px;
+  font-size: 120%;
+  .active & {
+    border-color: $ARIANE_BACKGROUND;
+  }
 }
