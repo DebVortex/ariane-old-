@@ -16,7 +16,7 @@ $(eval $(call CMDS, $(cmd)))
 
 .PHONY: help clean clean-build clean-docs clean-pyc clean-test cmd compile-vendor coverage \
 	coverage-html coverage-js coverage-js-html create-db develop docs isort migrate open-docs \
-	serve-docs runserver shell show-js-coverage startapp test test-all test-js test-upload upload
+	serve-docs runserver shell startapp test test-all test-js test-upload upload
 
 help:
 	@echo "Please use 'make <target>' where <target> is one of"
@@ -87,7 +87,7 @@ compile-scss:
 
 compile-vendor:
 	node_modules/.bin/modernizr -c node_modules/modernizr/lib/config-all.json -d node_modules/modernizr/
-	node_modules/.bin/grunt
+	node_modules/.bin/grunt uglify
 
 coverage:
 	envdir envs/$(ENV) coverage run -m pytest $(TEST_ARGS) tests/

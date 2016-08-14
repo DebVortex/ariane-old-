@@ -4,8 +4,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
 
-
-
     jshint: {
       files: ['Gruntfile.js', main_file, 'tests/jstests/tests.js'],
       options: {
@@ -31,7 +29,7 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      files: [],
+      files: ['ariane/static/scss/main.scss', 'ariane/static/scss/components/*.scss'],
       tasks: ['sass'],
       options: {
         'atBegin': true,
@@ -43,7 +41,7 @@ module.exports = function(grunt) {
         files: {
           'ariane/static/js/vendor/compiled.js': [
             'node_modules/modernizr/modernizr.js',
-            'node_modules/zepto/zepto.min.js',
+            'node_modules/zepto/dist/zepto.min.js',
             'node_modules/knockout/build/output/knockout-latest.js'
           ]
         }
