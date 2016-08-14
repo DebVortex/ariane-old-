@@ -23,8 +23,13 @@
   {% block content %}
   {% endblock %}
 
+  {% block js_settings %}{% endblock %}
+
+  {% block js_templates %}{% endblock %}
+
   <script src="{% static "js/vendor/compiled.js" %}"></script>
   <script src="{% static "js/vendor/responsivevoice.js" %}"></script>
+
   {% block script %}{% endblock %}
 
   <!-- ariane 0.1.0 powered by Django {{ django_version }} -->

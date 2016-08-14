@@ -1,10 +1,69 @@
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
+{% block js_settings %}
+<script type="text/javascript">
+  var userLanguage = 'en-GB';
+  var initializationTimeout = 1000;
+</script>
+{% endblock %}
+
+{% block js_templates %}
+<script type="text/html" id="empty"></script>
+<script type="text/html" id="infoText">
+  <div class="text-center" data-bind="text: text"></div>
+</script>
+{% for js_file, template_id in extra_templates %}
+<script
+  {% if template_id %}type="text/html" id="{{ template_id }}"{% endif %}
+  src="{% static 'js_file' %}">
+</script>
+{% endfor %}
+{% endblock %}
+
 {% block script %}
   <script src="{% static "js/main.js" %}"></script>
+  <script type="text/javascript">
+  $(document).ready(function () {
+    var ariane = new Ariane(userLanguage);
+    ariane.initialize();
+  });
+  </script>
+
 {% endblock %}
 
 {% block content %}
-  <h1>Ariane</h1>
+<div id="content">
+  <div class="row show-for-small-only">
+    <div class="small-12 columns">
+      ARIANE ON SMALL
+    </div>
+  </div>
+  <div class="row hide-for-small-only">
+    <div class="small-3 columns">
+      <div data-bind="template: { name: leftTemplate, data: leftData }">
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div data-bind="template: { name: centerTopTemplate, data: centerTopData }">
+      </div>
+      <div data-bind="template: { name: centerBottomTemplate, data: centerBottomData }">
+      </div>
+    </div>
+    <div class="small-3 columns">
+      <div id="ariane" data-bind="css: {active: active}">
+        <div class="arc first_arc invis_arc">
+          <div class="arc second_arc invis_arc">
+            <div class="arc third_arc invis_arc">
+              <div class="arc fourth_arc invis_arc">
+                <div class="core"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-bind="template: { name: rightTemplate, data: centerBottomData }"></div>
+    </div>
+  </div>
+</div>
 {% endblock %}
