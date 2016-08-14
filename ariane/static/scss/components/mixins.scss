@@ -5,6 +5,13 @@
   border-radius: $radius;
 }
 
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    transition:         $transition;
+}
+
 @-moz-keyframes rotate_clockwise { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes rotate_clockwise { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes rotate_clockwise { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
@@ -14,17 +21,17 @@
 @keyframes rotate_counterclockwise { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
 
 @-moz-keyframes pulsing {
-  0% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
-  50% {box-shadow: 0px 0px 90px 30px $ARIANE_BACKGROUND;}
-  100% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
+  0% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
+  50% {box-shadow: 0px 0px 100px 30px $ARIANE_BACKGROUND;}
+  100% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
 }
 @-webkit-keyframes pulsing {
-  0% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
-  50% {box-shadow: 0px 0px 90px 30px $ARIANE_BACKGROUND;}
-  100% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
+  0% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
+  50% {box-shadow: 0px 0px 100px 30px $ARIANE_BACKGROUND;}
+  100% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
 }
 @keyframes pulsing {
-  0% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
-  50% {box-shadow: 0px 0px 90px 30px $ARIANE_BACKGROUND;}
-  100% {box-shadow: 0px 0px 75px 15px $ARIANE_BACKGROUND;};
+  0% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
+  50% {box-shadow: 0px 0px 100px 30px $ARIANE_BACKGROUND;}
+  100% {box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;};
 }

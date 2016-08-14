@@ -1213,25 +1213,28 @@ button {
     transform: rotate(-360deg); } }
 @-moz-keyframes pulsing {
   0% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
   50% {
-    box-shadow: 0px 0px 90px 30px #A3DBE3; }
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
   100% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; } }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
 @-webkit-keyframes pulsing {
   0% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
   50% {
-    box-shadow: 0px 0px 90px 30px #A3DBE3; }
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
   100% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; } }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
 @keyframes pulsing {
   0% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
   50% {
-    box-shadow: 0px 0px 90px 30px #A3DBE3; }
+    box-shadow: 0px 0px 100px 30px #A3DBE3; }
   100% {
-    box-shadow: 0px 0px 75px 15px #A3DBE3; } }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; } }
+* {
+  font-family: 'Rajdhani', sans-serif; }
+
 html, body, #content {
   height: 100%;
   background-color: #000000;
@@ -1244,6 +1247,8 @@ html, body, #content {
   margin-left: auto;
   margin-right: auto;
   max-width: initial; }
+  #content .row .columns {
+    height: 100%; }
 
 #ariane {
   margin-top: 2em; }
@@ -1255,6 +1260,9 @@ html, body, #content {
     border-radius: 50%;
     padding: 5px;
     border: 5px solid transparent;
+    -moz-transition: border 500ms linear;
+    -o-transition: border 500ms linear;
+    -webkit-transition: border 500ms linear;
     transition: border 500ms linear; }
   #ariane .first_arc {
     width: 150px;
@@ -1314,12 +1322,33 @@ html, body, #content {
     -ms-border-radius: 50%;
     border-radius: 50%;
     background-color: #CCCCCC;
-    box-shadow: 0px 0px 75px 15px #CCCCCC;
+    box-shadow: 0px 0px 85px 15px #CCCCCC;
+    -moz-transition: background 1s linear;
+    -o-transition: background 1s linear;
+    -webkit-transition: background 1s linear;
     transition: background 1s linear; }
   #ariane.active .core {
     background-color: #A3DBE3;
     border-color: #A3DBE3;
-    animation: pulsing 2s linear infinite;
-    box-shadow: 0px 0px 90px 30px #A3DBE3; }
+    box-shadow: 0px 0px 85px 15px #A3DBE3; }
+  #ariane.active.listening .core {
+    animation: pulsing 3s linear infinite; }
+  #ariane.active.speaking .core {
+    animation: pulsing 1s linear infinite; }
+
+.info-text-box {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  margin-top: 2em;
+  border: 1px solid #A3DBE3; }
+
+.info-text-box {
+  min-height: 46px;
+  -moz-transition: width 500ms;
+  -o-transition: width 500ms;
+  -webkit-transition: width 500ms;
+  transition: width 500ms; }
 
 /*# sourceMappingURL=main.css.map */
