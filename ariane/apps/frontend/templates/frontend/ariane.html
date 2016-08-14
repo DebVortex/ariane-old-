@@ -11,7 +11,7 @@
 {% block js_templates %}
 <script type="text/html" id="empty"></script>
 <script type="text/html" id="infoText">
-  <div class="text-center" data-bind="text: text"></div>
+  <div class="info-text-box" data-bind="lbylText: text"></div>
 </script>
 {% for js_file, template_id in extra_templates %}
 <script
@@ -45,13 +45,11 @@
       </div>
     </div>
     <div class="small-6 columns">
-      <div data-bind="template: { name: centerTopTemplate, data: centerTopData }">
-      </div>
-      <div data-bind="template: { name: centerBottomTemplate, data: centerBottomData }">
-      </div>
+      <div data-bind="template: { name: centerTopTemplate, data: centerTopData }"></div>
+      <div data-bind="template: { name: centerBottomTemplate, data: centerBottomData }"></div>
     </div>
     <div class="small-3 columns">
-      <div id="ariane" data-bind="css: {active: active}">
+      <div id="ariane" data-bind="css: {active: active, listening: listening, speaking: speaking}">
         <div class="arc first_arc invis_arc">
           <div class="arc second_arc invis_arc">
             <div class="arc third_arc invis_arc">
