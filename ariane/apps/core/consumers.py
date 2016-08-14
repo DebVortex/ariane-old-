@@ -1,3 +1,5 @@
+import json
+
 from channels import Group
 from channels.auth import channel_session_user, channel_session_user_from_http
 
@@ -16,9 +18,9 @@ def ws_connect(message):
     """
     if message.user.is_authenticated():
         Group('user-{}'.format(message.user.pk)).add(message.reply_channel)
-        Group('user-{}'.format(message.user.pk)).send({'text': 'Connected!'})
+        Group('user-{}'.format(message.user.pk)).send({'text': '{"info": "Connected!"}'})
     else:
-        message.reply_channel.send({'text': 'Not authenticated.'})
+        message.reply_channel.send({'text': '{"ariane.message": "Not authenticated."}'})
 
 
 @channel_session_user
@@ -33,11 +35,14 @@ def ws_message(message):
         message (Message): message containing the message to send back from the user.
     """
     if message.user.is_authenticated():
-        Group('user-{}'.format(message.user.pk)).send({
-            "text": "{message}".format(
-                name=message.user.username,
-                message=message.content['text']
+        msg = {
+            "ariane.messag": "{name}: {message}".format(
+                name=message.user.username, message=message.content['text']
             ),
+            "ariane.say": "{message}".format(message=message.content['text'])
+        }
+        Group('user-{}'.format(message.user.pk)).send({
+            "text": json.dumps(msg)
         })
 
 
