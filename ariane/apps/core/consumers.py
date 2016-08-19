@@ -36,7 +36,7 @@ def ws_message(message):
     """
     if message.user.is_authenticated():
         msg = {
-            "ariane.messag": "{name}: {message}".format(
+            "ariane.message": "{message}".format(
                 name=message.user.username, message=message.content['text']
             ),
             "ariane.say": "{message}".format(message=message.content['text'])
