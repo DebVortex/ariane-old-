@@ -6,7 +6,7 @@ var languages = {
 function Ariane(lang) {
     self = this;
 
-    self.active = ko.observable(false);
+    self.connected = ko.observable(false);
     self.listening = ko.observable(false);
     self.speaking = ko.observable(false);
 
@@ -24,21 +24,25 @@ function Ariane(lang) {
     self.first_connection = true;
 
     self.start_recognition = function() {
+        /* Set listening to true and start speech recognition */
         self.listening(true);
         self._rec.start();
     };
 
     self.stop_recognition = function() {
+        /* Set listening to false and stop speech recognition */
         self.listening(false);
         self._rec.stop();
     };
 
     self.start_speaking = function() {
+        /* Set speaking boolean to true and then invoke stop_recognition */
         self.speaking(true);
         self.stop_recognition();
     };
 
     self.stop_speaking = function() {
+        /* Set speaking boolean to false and then invoke start_recognition */
         self.speaking(false);
         self.start_recognition();
     };
@@ -55,8 +59,17 @@ function Ariane(lang) {
         return true;
     };
 
-    self.dispatch_message = function(e) {
-        data = JSON.parse(e.data);
+    self.dispatch_message = function(resp) {
+        /* Parse provided data and invoke specified messages.
+         *
+         * Called as onmessage handler from the websocket. The JSON stored in the data attibute
+         * of the resp keys and values. The keys represent the function names and the value the
+         * data passed into the functions.
+         *
+         * The function names are provided as dotted strings. For example, the function name
+         * "ariane.say" will invoke the function window.ariane.say
+         */
+        data = JSON.parse(resp.data);
         object_keys(data).forEach(function (key) {
             if (key !== 'info') {
                 func = window;
@@ -68,7 +81,14 @@ function Ariane(lang) {
         });
     };
 
-    self.initialize = function() {self._initialize.knockout();};
+    self.initialize = function() {
+        /* Start the initialization process.
+         *
+         * The intialization process follows the this order:
+         * knockout -> voice -> speechRecognition -> websocket
+         */
+        self._initialize.knockout();
+    };
 
     /* istanbul ignore next:
         * lack of coverage due to setTimeout
@@ -77,6 +97,12 @@ function Ariane(lang) {
     */
     self._initialize = {
         knockout: function() {
+            /* Initialize knockout by applying the bindings.
+             *
+             * After a configureable delay, the inner most arc is displayed and after an
+             * additional delay, the same arc start its animation. After that it starts the voice
+             * initialization.
+             */
             ko.applyBindings(self);
             self.message('Initializing user interface...');
             setTimeout(function() {
@@ -88,6 +114,12 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         voice: function() {
+            /* Initialize voice by setting the language.
+             *
+             * After a configureable delay, the second arc from the middle is displayed and after
+             * an additional delay, the same most arc start its animation. It then starts the
+             * speech recognition initialization.
+             */
             self.message('Initializing language...');
             setTimeout(function() {
                 $('.third_arc').removeClass('invis_arc');
@@ -99,6 +131,13 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         speechRecognition: function() {
+            /* Initialize speechRecognition instantiating and configuring the
+             * webkitSpeechRecognition object.
+             *
+             * After a configureable delay, the second most outer arc is displayed and after an
+             * additional delay, the same arc start its animation. It then starts the websocket
+             * initialization process.
+             */
             self.message('Initializing speech recognition...');
             setTimeout(function() {
                 $('.second_arc').removeClass('invis_arc');
@@ -106,6 +145,20 @@ function Ariane(lang) {
                 self._rec.lang = lang;
                 self._rec.continuous = true;
                 self._rec.interimResults = false;
+                self._rec.onresult = function(e) {
+                    /* onresult handler for successful transcription.
+                     *
+                     * Extract the message and send it to the server via websocket. Right now,
+                     * that only happens if it contains the phrase "ari" (short for "ariane").
+                     */
+                    message = e.results[e.results.length -1];
+                    transcript = message[0].transcript;
+                    if (transcript.toLowerCase().indexOf('ari') !== -1) {
+                            console.log("sending");
+                            self.socket.send(transcript);
+                        }
+                    };
+
                 setTimeout(function() {
                     $('.second_arc').addClass('animated');
                     self._initialize.websocket();
@@ -113,24 +166,25 @@ function Ariane(lang) {
             }, initializationTimeout);
         },
         websocket: function() {
+            /* Initialize connection by initializing the websocket.
+             *
+             * After a configureable delay, the outer arc from the middle is displayed and after
+             * an additional delay, the same arc start its animation. It then sets the connected
+             * attribute to true.
+             */
             self.message('Establishing connection...');
             setTimeout(function() {
                 $('.first_arc').removeClass('invis_arc');
                 setTimeout(function() {
                     $('.first_arc').addClass('animated');
                     self.socket = new ReconnectingWebSocket('ws://' + window.location.host + '/ws');
-                    self._rec.onresult = function(e) {
-                        message = e.results[e.results.length -1];
-                        transcript = message[0].transcript;
-                        console.log(transcript);
-                        console.log(transcript.indexOf('ari'));
-                        if (transcript.toLowerCase().indexOf('ari') !== -1) {
-                            console.log("sending");
-                            self.socket.send(transcript);
-                        }
-                    };
                     self.socket.onopen = function() {
-                        self.active(true);
+                        /* onopen handler for websocket.
+                         *
+                         * Sets the connected state to true and shows a message. If it's the first
+                         * time the connection gets established, another message is shown.
+                         */
+                        self.connected(true);
                         if (self.first_connection) {
                             self.message('Connection established. Ariane is now active.');
                             self.first_connection = false;
@@ -139,7 +193,11 @@ function Ariane(lang) {
                         }
                     };
                     self.socket.onclose = function() {
-                        self.active(false);
+                        /* onclose handler for websocket.
+                         *
+                         * Sets the connected state to false and shows a message.
+                         */
+                        self.connected(false);
                         self.message('Connection lost. Trying to reconnect...');
                     };
                     self.socket.onmessage = self.dispatch_message;

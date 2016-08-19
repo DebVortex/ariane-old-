@@ -23,7 +23,7 @@ html, body, #content {
 }
 
 #content {
-  &.active {
+  &.connected {
     color: $ARIANE_BACKGROUND;
   }
   .row {
@@ -59,7 +59,7 @@ html, body, #content {
       animation: rotate_clockwise 10s linear infinite;
     }
   }
-  .active & .first_arc {
+  .connected & .first_arc {
     border-top-color: $ARIANE_BACKGROUND;
   }
 
@@ -76,7 +76,7 @@ html, body, #content {
       animation: rotate_counterclockwise 5s linear infinite;
     }
   }
-  .active & .second_arc {
+  .connected & .second_arc {
     border-left-color: $ARIANE_BACKGROUND;
     border-right-color: $ARIANE_BACKGROUND;
   }
@@ -94,7 +94,7 @@ html, body, #content {
       animation: rotate_clockwise 2s linear infinite;
     }
   }
-  .active & .third_arc {
+  .connected & .third_arc {
     border-top-color: $ARIANE_BACKGROUND;
     border-bottom-color: $ARIANE_BACKGROUND;
   }
@@ -112,7 +112,7 @@ html, body, #content {
       animation: rotate_counterclockwise 3s linear infinite;
     }
   }
-  .active & .fourth_arc {
+  .connected & .fourth_arc {
     border-left-color: $ARIANE_BACKGROUND;
     border-top-color: $ARIANE_BACKGROUND;
   }
@@ -126,15 +126,15 @@ html, body, #content {
     box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND_INACTIVE;
     @include transition(background 1s linear);
   }
-  .active & .core {
+  .connected & .core {
     background-color: $ARIANE_BACKGROUND;
     border-color: $ARIANE_BACKGROUND;
     box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;
   }
-  .active.listening & .core {
+  .connected.listening & .core {
     animation: pulsing 3s linear infinite;
   }
-  .active.speaking & .core {
+  .connected.speaking & .core {
     animation: pulsing 1s linear infinite;
   }
 }
@@ -148,7 +148,7 @@ html, body, #content {
   border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
   min-height: 180px;
   font-size: 120%;
-  .active & {
+  .connected & {
     border-color: $ARIANE_BACKGROUND;
   }
 }
