@@ -1,3 +1,5 @@
+import json
+
 from channels import Group
 from channels.tests import ChannelTestCase, apply_routes
 from channels.tests.http import HttpClient
@@ -17,7 +19,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client = HttpClient()
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
         response = client.receive()
-        self.assertEqual(response, {'text': "Not authenticated."})
+        self.assertEqual(response, {'text': '{"ariane.message": "Not authenticated."}'})
 
     def test_ws_connect_authenticated(self):
         """Test that ws_connect is possible if user is logged in."""
@@ -26,7 +28,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.login(username='Ada Lovelace', password='123')
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
         response = client.receive()
-        self.assertEqual(response, {'text': "Connected!"})
+        self.assertEqual(response, {'text': '{"info": "Connected!"}'})
 
     def test_ws_message_not_authenticated(self):
         """Test that sending to ws_connect returns noting if not connected."""
@@ -45,7 +47,8 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.receive()  # Drop connected message
         client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         response = client.receive()
-        assert response == {'text': "Ping!"}
+        assert json.loads(response['text']) == json.loads(
+            '{"ariane.say": "Ping!", "ariane.message": "Ping!"}')
 
     def test_ws_disconnect(self):
         """Test that disconnecting removes the reply_channel from the Group."""

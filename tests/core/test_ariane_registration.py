@@ -17,4 +17,4 @@ class TestArianeAppRegistration:
     def test_register_js(self, clean_ariane, jsfile_path):
         """Test the register_js function."""
         register_js(jsfile_path)
-        assert jsfile_path in clean_ariane.js_files
+        assert any([jsfile_path in js_file[0] for js_file in clean_ariane.js_files])

@@ -1,0 +1,154 @@
+@import "../../../node_modules/foundation-sites/scss/foundation";
+
+@import "components/settings";
+@import "components/mixins";
+
+@include foundation-global-styles;
+@include foundation-flex-classes;
+@include foundation-flex-grid;
+@include foundation-media-object;
+@include foundation-visibility-classes;
+@include foundation-float-classes;
+
+
+* {
+  font-family: 'VT323', monospace;
+}
+
+html, body, #content {
+  height: 100%;
+  background-color: #000000;
+  overflow: hidden;
+  color: $ARIANE_BACKGROUND_INACTIVE;
+}
+
+#content {
+  &.connected {
+    color: $ARIANE_BACKGROUND;
+  }
+  .row {
+    height: 100%;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: initial;
+    .columns {
+      height: 100%
+    }
+  }
+}
+
+#ariane {
+  margin-top: 2em;
+
+  .arc {
+    margin: 0 auto;
+    @include border-radius(50%);
+    padding: 5px;
+    border: 5px solid transparent;
+    @include transition(border 500ms linear);
+  }
+  .first_arc {
+    width: 150px;
+    height: 150px;
+    border-top-color: $ARIANE_BACKGROUND_INACTIVE;
+    &.invis_arc {
+      border-top-color: transparent;
+    }
+    &.animated {
+      animation: rotate_clockwise 10s linear infinite;
+    }
+  }
+  .connected & .first_arc {
+    border-top-color: $ARIANE_BACKGROUND;
+  }
+
+  .second_arc {
+    width: 130px;
+    height: 130px;
+    border-left-color: $ARIANE_BACKGROUND_INACTIVE;
+    border-right-color: $ARIANE_BACKGROUND_INACTIVE;
+    &.invis_arc {
+      border-left-color: transparent;
+      border-right-color: transparent;
+    }
+    &.animated {
+      animation: rotate_counterclockwise 5s linear infinite;
+    }
+  }
+  .connected & .second_arc {
+    border-left-color: $ARIANE_BACKGROUND;
+    border-right-color: $ARIANE_BACKGROUND;
+  }
+
+  .third_arc {
+    width: 110px;
+    height: 110px;
+    border-top-color: $ARIANE_BACKGROUND_INACTIVE;
+    border-bottom-color: $ARIANE_BACKGROUND_INACTIVE;
+    &.invis_arc {
+      border-top-color: transparent;
+      border-bottom-color: transparent;
+    }
+    &.animated {
+      animation: rotate_clockwise 2s linear infinite;
+    }
+  }
+  .connected & .third_arc {
+    border-top-color: $ARIANE_BACKGROUND;
+    border-bottom-color: $ARIANE_BACKGROUND;
+  }
+
+  .fourth_arc {
+    width: 90px;
+    height: 90px;
+    border-left-color: $ARIANE_BACKGROUND_INACTIVE;
+    border-top-color: $ARIANE_BACKGROUND_INACTIVE;
+    &.invis_arc {
+      border-left-color: transparent;
+      border-top-color: transparent;
+    }
+    &.animated {
+      animation: rotate_counterclockwise 3s linear infinite;
+    }
+  }
+  .connected & .fourth_arc {
+    border-left-color: $ARIANE_BACKGROUND;
+    border-top-color: $ARIANE_BACKGROUND;
+  }
+
+  .core {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    @include border-radius(50%);
+    background-color: $ARIANE_BACKGROUND_INACTIVE;
+    box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND_INACTIVE;
+    @include transition(background 1s linear);
+  }
+  .connected & .core {
+    background-color: $ARIANE_BACKGROUND;
+    border-color: $ARIANE_BACKGROUND;
+    box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND;
+  }
+  .connected.listening & .core {
+    animation: pulsing 3s linear infinite;
+  }
+  .connected.speaking & .core {
+    animation: pulsing 1s linear infinite;
+  }
+}
+
+.info-text-box {
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  margin-top: 1em;
+  border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
+  min-height: 180px;
+  font-size: 120%;
+  .connected & {
+    border-color: $ARIANE_BACKGROUND;
+  }
+}
