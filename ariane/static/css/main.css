@@ -1241,7 +1241,7 @@ html, body, #content {
   overflow: hidden;
   color: #CCCCCC; }
 
-#content.active {
+#content.connected {
   color: #A3DBE3; }
 #content .row {
   height: 100%;
@@ -1274,7 +1274,7 @@ html, body, #content {
       border-top-color: transparent; }
     #ariane .first_arc.animated {
       animation: rotate_clockwise 10s linear infinite; }
-  .active #ariane .first_arc {
+  .connected #ariane .first_arc {
     border-top-color: #A3DBE3; }
   #ariane .second_arc {
     width: 130px;
@@ -1286,7 +1286,7 @@ html, body, #content {
       border-right-color: transparent; }
     #ariane .second_arc.animated {
       animation: rotate_counterclockwise 5s linear infinite; }
-  .active #ariane .second_arc {
+  .connected #ariane .second_arc {
     border-left-color: #A3DBE3;
     border-right-color: #A3DBE3; }
   #ariane .third_arc {
@@ -1299,7 +1299,7 @@ html, body, #content {
       border-bottom-color: transparent; }
     #ariane .third_arc.animated {
       animation: rotate_clockwise 2s linear infinite; }
-  .active #ariane .third_arc {
+  .connected #ariane .third_arc {
     border-top-color: #A3DBE3;
     border-bottom-color: #A3DBE3; }
   #ariane .fourth_arc {
@@ -1312,7 +1312,7 @@ html, body, #content {
       border-top-color: transparent; }
     #ariane .fourth_arc.animated {
       animation: rotate_counterclockwise 3s linear infinite; }
-  .active #ariane .fourth_arc {
+  .connected #ariane .fourth_arc {
     border-left-color: #A3DBE3;
     border-top-color: #A3DBE3; }
   #ariane .core {
@@ -1329,13 +1329,13 @@ html, body, #content {
     -o-transition: background 1s linear;
     -webkit-transition: background 1s linear;
     transition: background 1s linear; }
-  .active #ariane .core {
+  .connected #ariane .core {
     background-color: #A3DBE3;
     border-color: #A3DBE3;
     box-shadow: 0px 0px 85px 15px #A3DBE3; }
-  .active.listening #ariane .core {
+  .connected.listening #ariane .core {
     animation: pulsing 3s linear infinite; }
-  .active.speaking #ariane .core {
+  .connected.speaking #ariane .core {
     animation: pulsing 1s linear infinite; }
 
 .info-text-box {
@@ -1347,7 +1347,7 @@ html, body, #content {
   border: 1px solid #CCCCCC;
   min-height: 180px;
   font-size: 120%; }
-  .active .info-text-box {
+  .connected .info-text-box {
     border-color: #A3DBE3; }
 
 /*# sourceMappingURL=main.css.map */
