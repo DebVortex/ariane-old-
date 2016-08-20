@@ -1,0 +1,3 @@
+responsiveVoice = {
+    speak: function () {}
+};

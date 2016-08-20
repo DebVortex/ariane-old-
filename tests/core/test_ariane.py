@@ -11,7 +11,7 @@ class TestAriane:
 
         Note:
             * _brain must be a dict, with language codes as keys and a dict as value
-            * js_files must be an empty dict
+            * js_files must be an empty list
         """
         ariane = Ariane()
         for language in settings.ARIANE_SUPPORTED_LANGUAGES:

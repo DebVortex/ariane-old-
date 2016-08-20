@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Ariane QUnit Frontendtests</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.0.0.css">
+  </head>
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script type="text/javascript">
+      var userLanguage = 'en-GB';
+      var initializationTimeout = 0;
+    </script>
+    <script src="https://code.jquery.com/qunit/qunit-2.0.0.js"></script>
+    <script src="../../ariane/static/js/vendor/compiled.js"></script>
+    <script src="../../ariane/static/js/helpers/obj-keys.js"></script>
+    <script src="helpers/responsiveVoice.js"></script>
+    <script src="helpers/speechRecognition.js"></script>
+    <script src="helpers/testObj.js"></script>
+    <script src="../../ariane/static/js/main.js"></script>
+    <script src="tests.js"></script>
+  </body>
+</html>

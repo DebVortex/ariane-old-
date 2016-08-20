@@ -50,11 +50,15 @@ def register(languages, func):
     ariane.register(languages, func)
 
 
-def register_js(js_file):
+def register_js(js_file, template_id=None):
     """Register a JS file that needs to be renderd in the frontend for the app to work.
 
     Args:
         js_file (string): The filepath that will be renderes in the template, using the
             {% static 'js_file' %}.
+
+    Kwargs:
+        template_id (string): The id used for the script tag in html. If provided, the type will
+        be set to text/html.
     """
-    ariane.js_files.append(js_file)
+    ariane.js_files.append((js_file, template_id))
