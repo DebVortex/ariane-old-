@@ -28,7 +28,7 @@ requires = [
     'django-model-utils==2.6',
     'envdir==0.7',
     'psycopg2==2.6.2',
-    'pytz==2016.6.1',
+    'pytz==2016.7',
 ]
 
 setup(
