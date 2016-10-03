@@ -195,6 +195,7 @@ class Common(Configuration, Ariane):
         # project apps
         'ariane.apps.core.apps.CoreConfig',
         'ariane.apps.frontend.apps.FrontendConfig',
+        'ariane.apps.wiki.apps.WikiConfig',
     )
 
     CACHES = values. DictValue({
