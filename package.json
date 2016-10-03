@@ -18,7 +18,8 @@
     "istanbul": "^0.4.4",
     "jasmine": "^2.4.1",
     "phantomjs": "^2.1.7",
-    "qunit": "^0.9.1"
+    "qunit": "^0.9.1",
+    "qunitjs": "^2.0.1"
   },
   "scripts": {
     "test": "node_modules/.bin/grunt"
