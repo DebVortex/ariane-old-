@@ -1,21 +1,15 @@
 import pytest
 
-from ariane.apps.core import ariane
+from ariane.apps.core import Ariane
 
 
 @pytest.fixture
 def clean_ariane(settings):
     """Return an fresh and empty instance of ariane."""
-    ariane._brain = {key: {} for key in settings.ARIANE_SUPPORTED_LANGUAGES}
+    ariane = Ariane()
+    ariane._brain = {}
     ariane.js_files = []
     return ariane
-
-
-@pytest.fixture
-def languages(settings):
-    """Return languages and keywords used for register."""
-    lngs = {key: ['foo', 'bar'] for key in settings.ARIANE_SUPPORTED_LANGUAGES}
-    return lngs
 
 
 @pytest.fixture
