@@ -17,7 +17,7 @@ extras_require = {}
 
 requires = [
     'asgiref==0.14.0',
-    'channels==0.17.2',
+    'channels==0.17.3',
     'daphne==0.15.0',
     'Django==1.10.2',
     'dj-database-url==0.4.1',
