@@ -1,5 +1,7 @@
 import pytest
 
+from unittest.mock import patch
+
 from ariane.apps.core import Ariane
 
 
@@ -35,3 +37,9 @@ class TestAriane:
             ariane = Ariane(language_code)
             for intent in intents:
                 ariane.actions[intent] == test_func
+
+    def test_handle(self, ariane_with_intent, wit_access_token, wit_response, language_code):
+        """Test that handle is able to take care of a Wit response."""
+        with patch('wit.Wit.message', lambda x, y: wit_response):
+            ariane = Ariane(language_code)
+            assert ariane.handle('') == 'Success!'

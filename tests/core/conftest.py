@@ -15,10 +15,22 @@ def wit_access_token(settings, language_code):
 
 
 @pytest.fixture
+def wit_response():
+    return {'entities': {'intent': [{'value': 'test_intent'}]}}
+
+
+@pytest.fixture
 def clean_ariane():
     """Return an fresh and empty instance of ariane."""
     Ariane.actions = {}
     Ariane.js_files = []
+
+
+@pytest.fixture
+def ariane_with_intent(clean_ariane):
+    def test_func(ariane, msg):
+        return 'Success!'
+    Ariane.register('test_intent', test_func)
 
 
 @pytest.fixture
