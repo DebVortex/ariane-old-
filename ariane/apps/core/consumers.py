@@ -3,6 +3,8 @@ import json
 from channels import Group
 from channels.auth import channel_session_user, channel_session_user_from_http
 
+from ariane.apps.core import Ariane
+
 
 @channel_session_user_from_http
 def ws_connect(message):
@@ -35,14 +37,10 @@ def ws_message(message):
         message (Message): message containing the message to send back from the user.
     """
     if message.user.is_authenticated():
-        msg = {
-            "ariane.message": "{message}".format(
-                name=message.user.username, message=message.content['text']
-            ),
-            "ariane.say": "{message}".format(message=message.content['text'])
-        }
+        msg = json.loads(message.content['text'])
+        ariane_resp = Ariane(msg['lang']).handle(msg['message'])
         Group('user-{}'.format(message.user.pk)).send({
-            "text": json.dumps(msg)
+            "text": json.dumps(ariane_resp)
         })
 
 
