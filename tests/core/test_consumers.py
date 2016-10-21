@@ -45,7 +45,8 @@ class TestWebsocketConsumer(ChannelTestCase):
         assert client.reply_channel in Group('').channel_layer._groups.get(
             'user-{}'.format(user.pk))
         client.receive()  # Drop connected message
-        client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
+        client.send_and_consume(u'websocket.receive',
+            {'text': '{"lang": "en_GB", "message": "Ping!"}'})
         response = client.receive()
         assert json.loads(response['text']) == json.loads(
             '{"ariane.say": "Ping!", "ariane.message": "Ping!"}')
