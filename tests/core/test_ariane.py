@@ -1,5 +1,7 @@
 import pytest
 
+from ariane.apps.core import Ariane
+
 
 class TestAriane:
     """Test the ariane core class."""
@@ -13,7 +15,8 @@ class TestAriane:
             [['intent1', 'intent1'], AttributeError],  # intent already exists
         ]
     )
-    def test_register(self, clean_ariane, intents, error):
+    def test_register(
+            self, clean_ariane, wit_access_token, language_code, intents, error):
         """Test that register works as expectet.
 
         The register function of ariane should return a AttributeError, if a keyword is already
@@ -21,12 +24,14 @@ class TestAriane:
         """
         def test_func():
             pass
+
         if error:
             with pytest.raises(error):
                 for intent in intents:
-                    clean_ariane.register(intent, test_func)
+                    Ariane.register(intent, test_func)
         else:
             for intent in intents:
-                clean_ariane.register(intent, test_func)
+                Ariane.register(intent, test_func)
+            ariane = Ariane(language_code)
             for intent in intents:
-                clean_ariane._brain[intent] == test_func
+                ariane.actions[intent] == test_func

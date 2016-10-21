@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 import json
 
 from channels import Group
@@ -36,6 +38,11 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.send_and_consume(u'websocket.receive', {'text': "Ping!"})
         assert not client.receive()
 
+    @patch('django.conf.settings.WIT_ACCESS_TOKENS', {'en_GB': ''})
+    @patch(
+        'ariane.apps.core.Ariane.handle',
+        lambda x, y: {"ariane.say": "Ping!", "ariane.message": "Ping!"}
+    )
     def test_ws_message_authenticated(self):
         """Test that sending to ws_connect returns the same string."""
         user = user_model.objects.create_user('Ada Lovelace', 'user_1@test.test', '123')
