@@ -152,3 +152,16 @@ html, body, #content {
     border-color: $ARIANE_BACKGROUND;
   }
 }
+
+#ariane-input {
+  input {
+    padding: 10px 20px 10px 20px;
+    margin-top: 4em;
+    width: 100%;
+    background: #000000;
+    border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
+    .connected & {
+      border-color: $ARIANE_BACKGROUND;
+    }
+  }
+}
