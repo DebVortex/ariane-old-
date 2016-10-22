@@ -10,6 +10,11 @@ class Ariane(object):
     actions = {}
 
     def __init__(self, language):
+        """Istantiate an istance of ariane.
+
+        Args:
+            language (string): a langauge string, e.g. 'en-GB'
+        """
         self.language = language
         self.client = Wit(
             access_token=settings.WIT_ACCESS_TOKENS[self.language],
@@ -31,6 +36,13 @@ class Ariane(object):
         cls.actions[intent] = func
 
     def handle(self, message):
+        """Handle provided message and return actions for ariane frontend.
+
+        Args:
+            message (string): from SST extracted string. Used for the Wit client.
+        Returns:
+            dict: instructions for the ariane frontend
+        """
         resp = self.client.message(message)
         # ToDo: Handle unknown or to bad confidence
         return self.actions[resp['entities']['intent'][0]['value']](self, resp)

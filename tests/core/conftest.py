@@ -11,11 +11,13 @@ def language_code():
 
 @pytest.fixture
 def wit_access_token(settings, language_code):
+    """Set a fake access token for tests."""
     settings.WIT_ACCESS_TOKENS = {language_code: '1234567890'}
 
 
 @pytest.fixture
 def wit_response():
+    """Example response from the wit client."""
     return {'entities': {'intent': [{'value': 'test_intent'}]}}
 
 
@@ -28,6 +30,7 @@ def clean_ariane():
 
 @pytest.fixture
 def ariane_with_intent(clean_ariane):
+    """Create an Ariane instance with an example intent and action."""
     def test_func(ariane, msg):
         return 'Success!'
     Ariane.register('test_intent', test_func)

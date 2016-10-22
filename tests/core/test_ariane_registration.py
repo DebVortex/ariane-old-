@@ -6,9 +6,9 @@ class TestArianeAppRegistration:
 
     def test_register(self, clean_ariane, wit_access_token, language_code):
         """Test the register function."""
-
         @register('intent')
         def example_func():
+            """Function to use in tests for ariane."""
             pass
 
         assert Ariane(language_code).actions['intent'] == example_func
