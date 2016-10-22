@@ -70,9 +70,6 @@ function Ariane(lang) {
          * "ariane.say" will invoke the function window.ariane.say
          */
         data = JSON.parse(resp.data);
-        console.log('------- recived data: -------');
-        console.log(data);
-        console.log('-----------------------------');
         object_keys(data).forEach(function (key) {
             if (key !== 'info') {
                 func = window;
