@@ -1,20 +1,19 @@
-from ariane.apps.core import register, register_js
+from ariane.apps.core import Ariane, register, register_js
 
 
 class TestArianeAppRegistration:
     """Test the module registration process."""
 
-    def test_register(self, clean_ariane, languages):
+    def test_register(self, clean_ariane, wit_access_token, language_code):
         """Test the register function."""
+        @register('intent')
         def example_func():
+            """Function to use in tests for ariane."""
             pass
 
-        register(languages, example_func)
-        for language in languages:
-            for keyword in clean_ariane._brain[language]:
-                assert clean_ariane._brain[language][keyword] == example_func
+        assert Ariane(language_code).actions['intent'] == example_func
 
-    def test_register_js(self, clean_ariane, jsfile_path):
+    def test_register_js(self, clean_ariane, wit_access_token, language_code, jsfile_path):
         """Test the register_js function."""
         register_js(jsfile_path)
-        assert any([jsfile_path in js_file[0] for js_file in clean_ariane.js_files])
+        assert any([jsfile_path in js_file[0] for js_file in Ariane(language_code).js_files])
