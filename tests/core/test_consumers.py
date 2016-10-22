@@ -1,6 +1,5 @@
-from unittest.mock import patch
-
 import json
+from unittest.mock import patch
 
 from channels import Group
 from channels.tests import ChannelTestCase, apply_routes
