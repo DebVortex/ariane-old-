@@ -27,6 +27,13 @@ html, body, #content {
     color: $ARIANE_BACKGROUND;
   }
   .row {
+
+    transition: opacity 1s ease-out;
+    &.inactive {
+      opacity: 0;
+    }
+
+    opacity: 1;
     height: 100%;
     width: 100%;
     margin-left: auto;
@@ -154,6 +161,10 @@ html, body, #content {
 }
 
 #ariane-input {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1em;
   input {
     padding: 10px 20px 10px 20px;
     margin-top: 4em;

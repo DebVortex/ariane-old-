@@ -1244,11 +1244,15 @@ html, body, #content {
 #content.connected {
   color: #A3DBE3; }
 #content .row {
+  transition: opacity 1s ease-out;
+  opacity: 1;
   height: 100%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   max-width: initial; }
+  #content .row.inactive {
+    opacity: 0; }
   #content .row .columns {
     height: 100%; }
 
@@ -1350,13 +1354,18 @@ html, body, #content {
   .connected .info-text-box {
     border-color: #A3DBE3; }
 
-#ariane-input input {
-  padding: 10px 20px 10px 20px;
-  margin-top: 4em;
+#ariane-input {
+  position: absolute;
+  bottom: 0;
   width: 100%;
-  background: #000000;
-  border: 1px solid #CCCCCC; }
-  .connected #ariane-input input {
-    border-color: #A3DBE3; }
+  padding: 1em; }
+  #ariane-input input {
+    padding: 10px 20px 10px 20px;
+    margin-top: 4em;
+    width: 100%;
+    background: #000000;
+    border: 1px solid #CCCCCC; }
+    .connected #ariane-input input {
+      border-color: #A3DBE3; }
 
 /*# sourceMappingURL=main.css.map */

@@ -6,6 +6,7 @@ var languages = {
 function Ariane(lang) {
     self = this;
 
+    self.inactive = ko.observable(false);
     self.connected = ko.observable(false);
     self.listening = ko.observable(false);
     self.speaking = ko.observable(false);
@@ -81,6 +82,19 @@ function Ariane(lang) {
         });
     };
 
+    self.send = function(msg) {
+        if ((msg == 'sleep') && !self.inactive()) {
+            self.inactive(true);
+        } else if ((msg == 'wakeup') && self.inactive()) {
+            self.inactive(false);
+        } else if (!self.inactive()) {
+            self.socket.send(JSON.stringify({
+                'message': msg,
+                'lang': userLanguage
+            }));
+        }
+    };
+
     self.initialize = function() {
         /* Start the initialization process.
          *
@@ -146,18 +160,11 @@ function Ariane(lang) {
                 self._rec.continuous = true;
                 self._rec.interimResults = false;
                 self._rec.onresult = function(e) {
-                    /* onresult handler for successful transcription.
-                     *
-                     * Extract the message and send it to the server via websocket. Right now,
-                     * that only happens if it contains the phrase "ari" (short for "ariane").
-                     */
+                    /* onresult handler for successful transcription. */
                     message = e.results[e.results.length -1];
                     transcript = message[0].transcript;
-                    if (transcript.toLowerCase().indexOf('ari') !== -1) {
-                            console.log("sending");
-                            self.socket.send(transcript);
-                        }
-                    };
+                    self.send(transcript);
+                };
 
                 setTimeout(function() {
                     $('.second_arc').addClass('animated');
