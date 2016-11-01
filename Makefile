@@ -27,7 +27,6 @@ help:
 	@echo "  clean-pyc                to remove Python file artifacts"
 	@echo "  clean-test               to remove test and coverage artifacts"
 	@echo "  cmd=<manage.py command>  to use any other manage.py command"
-	@echo "  codeship                 to run tests on codeship"
 	@echo "  compile-scss             to compile the scss files into a single css file."
 	@echo "  compile-vendor           to compile and copy vendor javascript"
 	@echo "  coverage                 to generate a coverage report with the default Python"
@@ -82,10 +81,6 @@ clean-test:
 
 cmd:
 	@echo "  cmd                       Please use 'make cmd=<manage.py command>'"
-
-codeship:
-	make test-all
-	bash <$(curl -s https://codecov.io/bash)
 
 compile-scss:
 	node_modules/.bin/grunt sass
