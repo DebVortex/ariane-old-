@@ -85,7 +85,7 @@ cmd:
 
 codeship:
 	make test-all
-	bash <(curl -s https://codecov.io/bash)
+	bash <$(curl -s https://codecov.io/bash)
 
 compile-scss:
 	node_modules/.bin/grunt sass
