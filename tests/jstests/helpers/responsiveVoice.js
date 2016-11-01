@@ -1,3 +1,0 @@
-responsiveVoice = {
-    speak: function () {}
-};
