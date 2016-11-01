@@ -20,7 +20,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client = HttpClient()
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
         response = client.receive()
-        self.assertEqual(response, {'text': '{"ariane.message": "Not authenticated."}'})
+        self.assertEqual(response, {"ariane.message": "Not authenticated."})
 
     def test_ws_connect_authenticated(self):
         """Test that ws_connect is possible if user is logged in."""
@@ -29,7 +29,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.login(username='Ada Lovelace', password='123')
         client.send_and_consume(u'websocket.connect', {'path': "/ws"})
         response = client.receive()
-        self.assertEqual(response, {'text': '{"info": "Connected!"}'})
+        self.assertEqual(response, {"info": "Connected!"})
 
     def test_ws_message_not_authenticated(self):
         """Test that sending to ws_connect returns noting if not connected."""
@@ -54,7 +54,7 @@ class TestWebsocketConsumer(ChannelTestCase):
         client.send_and_consume(u'websocket.receive',
             {'text': '{"lang": "en_GB", "message": "Ping!"}'})
         response = client.receive()
-        assert json.loads(response['text']) == json.loads(
+        assert response == json.loads(
             '{"ariane.say": "Ping!", "ariane.message": "Ping!"}')
 
     def test_ws_disconnect(self):
