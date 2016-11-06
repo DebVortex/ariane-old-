@@ -50,15 +50,15 @@ QUnit.test("Test say of Ariane (using responsive voice internally)", function( a
     this.ariane.say("Hi there!");
 });
 
-QUnit.test("Test the send function of ariane.", function( assert ) {
+QUnit.test("Test the handle_transcription function of ariane.", function( assert ) {
     assert.notOk(this.ariane.inactive());
-    this.ariane.send('sleep');
+    this.ariane.handle_transcription('sleep');
     assert.ok(this.ariane.inactive());
-    this.ariane.send('wakeup');
+    this.ariane.handle_transcription('wakeup');
     assert.notOk(this.ariane.inactive());
     assert.notOk(this.ariane.socket.called);
     msg = 'Who was Nelson Mandela?';
-    this.ariane.send(msg);
+    this.ariane.handle_transcription(msg);
     assert.ok(this.ariane.socket.called);
     assert.ok(this.ariane.socket.called_with.message === msg);
     assert.ok(this.ariane.socket.called_with.lang === userLanguage);

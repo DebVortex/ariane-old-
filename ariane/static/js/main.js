@@ -82,7 +82,15 @@ function Ariane(lang) {
         });
     };
 
-    self.send = function(msg) {
+    self.handle_transcription = function(msg) {
+        /* Handle transcripted message.
+         *
+         * If ariane is active and the message is 'sleep', set her to inactive.
+         * If ariane is inactive and the message is 'wakeup', set her to active.
+         * If the message is neither of the above cases, the message gets send
+         * to the server via the websocket connection. The userLangue is is also
+         * provided.
+         */
         if ((msg == 'sleep') && !self.inactive()) {
             self.inactive(true);
         } else if ((msg == 'wakeup') && self.inactive()) {
@@ -163,7 +171,7 @@ function Ariane(lang) {
                     /* onresult handler for successful transcription. */
                     message = e.results[e.results.length -1];
                     transcript = message[0].transcript;
-                    self.send(transcript);
+                    self.handle_transcription(transcript);
                 };
 
                 setTimeout(function() {
