@@ -29,10 +29,7 @@
       e.preventDefault();
       field = $(this).find('input');
       if (ariane.connected()) {
-        ariane.socket.send(JSON.stringify({
-          'message': field.val(),
-          'lang': userLanguage
-        }));
+        ariane.send(field.val());
         field.val('');
       }
     });
@@ -44,12 +41,12 @@
 
 {% block content %}
 <div id="content" data-bind="css: {connected: connected, listening: listening, speaking: speaking}">
-  <div class="row show-for-small-only">
+  <div class="row show-for-small-only" data-bind="css: {inactive: inactive}">
     <div class="small-12 columns">
       ARIANE ON SMALL
     </div>
   </div>
-  <div class="row hide-for-small-only">
+  <div class="row hide-for-small-only" data-bind="css: {inactive: inactive}">
     <div class="small-3 columns">
       <div data-bind="template: { name: leftTemplate, data: leftData }">
       </div>
@@ -70,13 +67,14 @@
           </div>
         </div>
       </div>
-      {% if debug %}
-      <div>
-        <form id="ariane-input"><input></form>
-      </div>
-      {% endif %}
       <div data-bind="template: { name: rightTemplate, data: rightData }"></div>
     </div>
   </div>
+
+  {% if debug %}
+  <form id="ariane-input"><input></form>
+  {% endif %}
+
 </div>
+
 {% endblock %}

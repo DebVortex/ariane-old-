@@ -4,6 +4,7 @@ QUnit.module("unrelated test", {
         ko.cleanNode(this.ariane);
         this.ariane.initialize();
         this.ariane._rec = new webkitSpeechRecognition();
+        this.ariane.socket = new ReconnectingWebSocket('');
     }
 });
 
@@ -47,4 +48,18 @@ QUnit.test("Test dispatch_message", function ( assert ) {
 QUnit.test("Test say of Ariane (using responsive voice internally)", function( assert ) {
     assert.expect(0);
     this.ariane.say("Hi there!");
+});
+
+QUnit.test("Test the handle_transcription function of ariane.", function( assert ) {
+    assert.notOk(this.ariane.inactive());
+    this.ariane.handle_transcription('sleep');
+    assert.ok(this.ariane.inactive());
+    this.ariane.handle_transcription('wakeup');
+    assert.notOk(this.ariane.inactive());
+    assert.notOk(this.ariane.socket.called);
+    msg = 'Who was Nelson Mandela?';
+    this.ariane.handle_transcription(msg);
+    assert.ok(this.ariane.socket.called);
+    assert.ok(this.ariane.socket.called_with.message === msg);
+    assert.ok(this.ariane.socket.called_with.lang === userLanguage);
 });
