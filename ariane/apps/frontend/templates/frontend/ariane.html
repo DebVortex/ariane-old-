@@ -29,7 +29,6 @@
       e.preventDefault();
       field = $(this).find('input');
       if (ariane.connected()) {
-        console.log("Sending " + field.val())
         ariane.send(field.val());
         field.val('');
       }
