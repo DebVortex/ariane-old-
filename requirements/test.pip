@@ -10,4 +10,5 @@ freezegun==0.3.7
 pytest-django==3.0.0
 pytest-factoryboy==1.3.0
 pytest-faker==1.1.0
+pytest-mocker==1.4.0
 pytest==3.0.3
