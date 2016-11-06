@@ -6,6 +6,8 @@ from functools import partial
 import pytest
 from faker import Faker
 
+from ariane.apps.core import Ariane
+
 
 @pytest.fixture
 def loaddata(settings, db):
@@ -84,3 +86,22 @@ def login(client, username, email, password):
         username, email="test@example.com", password=password)
     assert client.login(username=username, password=password)
     return user
+
+
+@pytest.fixture
+def clean_ariane():
+    """Return an fresh and empty instance of ariane."""
+    Ariane.actions = {}
+    Ariane.js_files = []
+
+
+@pytest.fixture
+def wit_access_token(settings, language_code):
+    """Set a fake access token for tests."""
+    settings.WIT_ACCESS_TOKENS = {language_code: '1234567890'}
+
+
+@pytest.fixture
+def language_code():
+    """Language code used for testing."""
+    return 'en-GB'
