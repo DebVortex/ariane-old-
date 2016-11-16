@@ -3,7 +3,8 @@ import wikipedia
 from ariane.apps.core import register
 
 language_translate = {
-    'en-GB': 'en'
+    'en-GB': 'en',
+    'de-DE': 'de'
 }
 
 
