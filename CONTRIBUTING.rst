@@ -113,9 +113,10 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in `README.rst`.
-3. The pull request should work for Python 2.7 and 3.5. Check
-   `Travis CI <https://travis-ci.org/debvortex/ariane/pull_requests>`_
-   and make sure that the tests pass for all supported Python versions.
+3. The pull request should work for Python 3.5, the imports should be sorted
+   using isort and all flake8 musst work as well. Check
+   `Codeship <https://app.codeship.com/projects/154658>`_
+   and make sure that the tests pass all checks.
 
 Tips
 ====

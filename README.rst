@@ -12,5 +12,5 @@ ariane
 
 A short description of the project.
 
-Detailed installation instructions for this Djangp project can be found in
+Detailed installation instructions for this Django project can be found in
 ``docs/installation.rst``.

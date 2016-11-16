@@ -118,7 +118,6 @@ html_theme_options = {
     'github_repo': 'ariane',
     'github_button': True,
     'github_banner': False,
-    'travis_button': False,
     'extra_nav_links': {
         'CodeCov': 'http://codecov.io/github/debvortex/ariane?branch=develop',
         'requires.io': 'https://requires.io/github/debvortex/ariane/requirements/?branch=develop',
