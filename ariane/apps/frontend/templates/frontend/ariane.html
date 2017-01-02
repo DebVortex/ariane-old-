@@ -29,7 +29,7 @@
       e.preventDefault();
       field = $(this).find('input');
       if (ariane.connected()) {
-        ariane.send(field.val());
+        ariane.handle_transcription(field.val());
         field.val('');
       }
     });
