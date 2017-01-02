@@ -26,9 +26,10 @@ class Ariane(object):
 class Common(Configuration, Ariane):
     """Common configuration base class."""
 
+
     SECRET_KEY = '(_j4e0=pbe(b+b1$^ch_48be0=gszglcgfzz^dy=(gnx=@m*b7'
 
-    DEBUG = values.BooleanValue(False)
+    DEBUG = values.BooleanValue(True)
 
     ADMINS = AdminsValue(
         (('Max Brauer <max@max-brauer.de>', 'max@max-brauer.de'),)
@@ -85,7 +86,7 @@ class Common(Configuration, Ariane):
         }
     }
 
-    ALLOWED_HOSTS = values.ListValue(['ariane.max-brauer.de'])
+    ALLOWED_HOSTS = values.ListValue(['*'])
 
     SITE_ID = values.IntegerValue(1)
 
@@ -134,7 +135,7 @@ class Common(Configuration, Ariane):
         #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     ])
 
-    MIDDLEWARE_CLASSES = values.ListValue([
+    MIDDLEWARE_CLASSES = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,7 +144,7 @@ class Common(Configuration, Ariane):
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    ])
+    ]
 
     ROOT_URLCONF = 'ariane.config.urls'
 
