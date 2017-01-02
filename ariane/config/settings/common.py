@@ -26,7 +26,6 @@ class Ariane(object):
 class Common(Configuration, Ariane):
     """Common configuration base class."""
 
-
     SECRET_KEY = '(_j4e0=pbe(b+b1$^ch_48be0=gszglcgfzz^dy=(gnx=@m*b7'
 
     DEBUG = values.BooleanValue(True)
@@ -197,7 +196,6 @@ class Common(Configuration, Ariane):
         'ariane.apps.core.apps.CoreConfig',
         'ariane.apps.frontend.apps.FrontendConfig',
         'ariane.apps.wiki.apps.WikiConfig',
-        'ariane.apps.users.apps.UsersConfig',
     )
 
     CACHES = values. DictValue({
@@ -205,8 +203,6 @@ class Common(Configuration, Ariane):
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         }
     })
-
-    CRISPY_TEMPLATE_PACK = values.Value('bootstrap3')
 
     GRAPPELLI_ADMIN_TITLE = 'ariane Admin'
 
