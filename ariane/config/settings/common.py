@@ -145,6 +145,17 @@ class Common(Configuration, Ariane):
         'django.middleware.security.SecurityMiddleware',
     ]
 
+    AUTHENTICATION_BACKENDS = (
+        # Needed to login by username in Django admin, regardless of `allauth`
+        'django.contrib.auth.backends.ModelBackend',
+
+        # `allauth` specific authentication methods, such as login by e-mail
+        'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
     ROOT_URLCONF = 'ariane.config.urls'
 
     WSGI_APPLICATION = 'ariane.config.wsgi.application'
@@ -191,6 +202,11 @@ class Common(Configuration, Ariane):
         'django.contrib.admindocs',
         'crispy_forms',
         'channels',
+
+        # allauth & providers
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
 
         # project apps
         'ariane.apps.core.apps.CoreConfig',
