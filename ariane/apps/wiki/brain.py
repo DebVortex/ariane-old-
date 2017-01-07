@@ -16,7 +16,7 @@ def get_wiki_article(ariane, wit_resp):
     wikipedia.set_lang(language_translate[ariane.language])
     result = wikipedia.summary(
         wit_resp['entities']['wikipedia_search_query'][0]['value'],
-        sentences=2
+        sentences=4
     )
     msg = {
         "ariane.message": result,
