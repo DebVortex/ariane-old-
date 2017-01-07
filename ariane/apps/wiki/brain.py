@@ -1,3 +1,5 @@
+import re
+
 import wikipedia
 
 from ariane.apps.core import register
@@ -18,6 +20,6 @@ def get_wiki_article(ariane, wit_resp):
     )
     msg = {
         "ariane.message": result,
-        "ariane.say": result
+        "ariane.say": re.sub("[\(\[].*?[\)\]]", "", result)
     }
     return msg
