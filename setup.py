@@ -16,19 +16,19 @@ def read(*paths):
 extras_require = {}
 
 requires = [
-    'asgiref==0.14.0',
+    'asgiref==1.0.0',
     'channels==0.17.3',
     'daphne==0.15.0',
-    'Django==1.10.3',
-    'dj-database-url==0.4.1',
+    'Django==1.10.5',
+    'dj-database-url==0.4.2',
     'django-braces==1.10.0',
     'django-configurations==2.0',
     'django-crispy-forms==1.6.1',
-    'django-grappelli==2.8.2',
+    'django-grappelli==2.9.1',
     'django-model-utils==2.6',
     'envdir==0.7',
     'psycopg2==2.6.2',
-    'pytz==2016.7',
+    'pytz==2016.10',
     'wit==4.2.0',
     'wikipedia==1.4.0'
 ]
