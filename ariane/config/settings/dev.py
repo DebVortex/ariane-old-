@@ -20,19 +20,8 @@ class Development(databases.Databases, common.Common):
     # devserver must be ahead of django.contrib.staticfiles
     INSTALLED_APPS = common.Common.INSTALLED_APPS + ('debug_toolbar',)
 
-    MIDDLEWARE_CLASSES = common.Common.MIDDLEWARE_CLASSES + [
-        'debug_toolbar.middleware.DebugToolbarMiddleware']
-
-    @property
-    def MIDDLEWARE_CLASSES(self):
-        """Return a tuple of middleware classes, as strings.
-
-        While using the Development class, DebugToolbarMiddleware has to be
-        added to the MIDDLEWARE_CLASSES to work propper.
-        """
-        return super().MIDDLEWARE_CLASSES + (
-            'debug_toolbar.middleware.DebugToolbarMiddleware',
-        )
+    MIDDLEWARE_CLASSES = common.Common.MIDDLEWARE_CLASSES + (
+        'debug_toolbar.middleware.DebugToolbarMiddleware',)
 
     @property
     def INTERNAL_IPS(self):
