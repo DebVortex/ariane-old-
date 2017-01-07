@@ -38,8 +38,6 @@ class Public(email.Email, databases.Databases, common.Common):
 
     X_FRAME_OPTIONS = 'DENY'
 
-    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-
 
 class SSL(object):
     """Default settings for SSL-enabled servers.

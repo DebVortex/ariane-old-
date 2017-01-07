@@ -1,6 +1,7 @@
 import os
 
 from configurations import Configuration, values
+from django.utils.translation import ugettext_lazy as _
 
 from .values import AdminsValue
 
@@ -19,7 +20,10 @@ class BaseDir(object):
 class Ariane(object):
     """Ariane configuration class."""
 
-    ARIANE_SUPPORTED_LANGUAGES = values.ListValue(['en-GB'])
+    ARIANE_SUPPORTED_LANGUAGES = values.ListValue([
+        ('en-GB', _("English")),
+        ('de-DE', _("German"))
+    ])
     WIT_ACCESS_TOKENS = values.DictValue()
 
 
@@ -91,7 +95,7 @@ class Common(Configuration, Ariane):
 
     # Internationalization
     # https://docs.djangoproject.com/en/dev/topics/i18n/
-    LANGUAGE_CODE = values.Value('en-us')
+    LANGUAGE_CODE = values.Value('en-GB')
 
     TIME_ZONE = values.Value('Europe/Berlin')
 
@@ -154,7 +158,7 @@ class Common(Configuration, Ariane):
     )
 
     ACCOUNT_EMAIL_REQUIRED = True
-    ACCOUNT_EMAIL_VERIFICATION = "none"
+    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
     LOGIN_REDIRECT_URL = '/'
 
@@ -213,6 +217,7 @@ class Common(Configuration, Ariane):
         # project apps
         'ariane.apps.core.apps.CoreConfig',
         'ariane.apps.frontend.apps.FrontendConfig',
+        'ariane.apps.users.apps.UsersConfig',
         'ariane.apps.wiki.apps.WikiConfig',
     )
 

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+<div id="content">
+  <div class="row align-center">
+    <div class="medium-3 small-12 columns">
+      <div class="border-box">
+        <h1>Navigation</h1>
+        <ul class="menu vertical">
+          <li>
+            <a href="{% url 'index' %}">{% trans "Back to Landingpage" %}</a>
+          </li>
+          <li {% if request.resolver_match.url_name == 'user_settings' %}class="active"{% endif %}>
+            <a href="{% url 'user_settings' %}">{% trans "Change Settings" %}</a>
+          </li>
+          <li {% if request.resolver_match.url_name == 'account_change_password' %}class="active"{% endif %}>
+            <a href="{% url 'account_change_password' %}">{% trans "Change Password" %}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="medium-5 small-12 columns">
+      <div class="border-box">
+        {% block account_content %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
