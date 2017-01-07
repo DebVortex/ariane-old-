@@ -28,7 +28,7 @@ class Common(Configuration, Ariane):
 
     SECRET_KEY = '(_j4e0=pbe(b+b1$^ch_48be0=gszglcgfzz^dy=(gnx=@m*b7'
 
-    DEBUG = values.BooleanValue(False)
+    DEBUG = values.BooleanValue(True)
 
     ADMINS = AdminsValue(
         (('Max Brauer <max@max-brauer.de>', 'max@max-brauer.de'),)
@@ -145,6 +145,19 @@ class Common(Configuration, Ariane):
         'django.middleware.security.SecurityMiddleware',
     )
 
+    AUTHENTICATION_BACKENDS = (
+        # Needed to login by username in Django admin, regardless of `allauth`
+        'django.contrib.auth.backends.ModelBackend',
+
+        # `allauth` specific authentication methods, such as login by e-mail
+        'allauth.account.auth_backends.AuthenticationBackend',
+    )
+
+    ACCOUNT_EMAIL_REQUIRED = True
+    ACCOUNT_EMAIL_VERIFICATION = "none"
+
+    LOGIN_REDIRECT_URL = '/'
+
     ROOT_URLCONF = 'ariane.config.urls'
 
     WSGI_APPLICATION = 'ariane.config.wsgi.application'
@@ -192,6 +205,11 @@ class Common(Configuration, Ariane):
         'crispy_forms',
         'channels',
 
+        # allauth & providers
+        'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+
         # project apps
         'ariane.apps.core.apps.CoreConfig',
         'ariane.apps.frontend.apps.FrontendConfig',
@@ -203,8 +221,6 @@ class Common(Configuration, Ariane):
             'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
         }
     })
-
-    CRISPY_TEMPLATE_PACK = values.Value('bootstrap3')
 
     GRAPPELLI_ADMIN_TITLE = 'ariane Admin'
 

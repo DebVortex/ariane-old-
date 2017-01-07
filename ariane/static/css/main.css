@@ -1233,7 +1233,9 @@ button {
   clear: both; }
 
 * {
-  font-family: 'VT323', monospace; }
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  line-height: 1; }
 
 html, body, #content {
   height: 100%;
@@ -1241,20 +1243,60 @@ html, body, #content {
   overflow: hidden;
   color: #CCCCCC; }
 
+input {
+  padding: 10px 20px 10px 20px;
+  width: 100%;
+  background: #000000;
+  border: 1px solid #CCCCCC; }
+  .connected input {
+    border-color: #A3DBE3; }
+  input[type=checkbox] {
+    width: auto; }
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0; }
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em; }
+
+.scrollable {
+  max-height: 60%;
+  overflow-y: auto; }
+  .with-footer-input .scrollable {
+    max-height: 50%; }
+
+.border-box {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #CCCCCC;
+  margin-top: 1em;
+  padding: 1em; }
+  .border-box h1 {
+    margin-top: 0; }
+  .connected .border-box {
+    border-color: #A3DBE3; }
+
 #content.connected {
   color: #A3DBE3; }
 #content .row {
   transition: opacity 1s ease-out;
   opacity: 1;
-  height: 100%;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   max-width: initial; }
   #content .row.inactive {
     opacity: 0; }
-  #content .row .columns {
+  #content .row.fullheight {
     height: 100%; }
+    #content .row.fullheight .columns {
+      height: 100%; }
 
 #ariane {
   margin-top: 2em; }
@@ -1355,17 +1397,14 @@ html, body, #content {
     border-color: #A3DBE3; }
 
 #ariane-input {
+  display: none;
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 1em; }
   #ariane-input input {
-    padding: 10px 20px 10px 20px;
-    margin-top: 4em;
-    width: 100%;
-    background: #000000;
-    border: 1px solid #CCCCCC; }
-    .connected #ariane-input input {
-      border-color: #A3DBE3; }
+    margin-top: 4em; }
+  .with-footer-input #ariane-input {
+    display: block; }
 
 /*# sourceMappingURL=main.css.map */

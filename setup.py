@@ -25,6 +25,7 @@ requires = [
     'daphne==0.15.0',
     'Django==1.10.5',
     'dj-database-url==0.4.2',
+    'django-allauth==0.30.0',
     'django-braces==1.10.0',
     'django-configurations==2.0',
     'django-crispy-forms==1.6.1',
