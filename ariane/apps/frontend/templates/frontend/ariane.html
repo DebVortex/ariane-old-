@@ -3,7 +3,7 @@
 
 {% block js_settings %}
 <script type="text/javascript">
-  var userLanguage = 'en-GB';
+  var userLanguage = "{{ user.settings.language }}";
   var initializationTimeout = 1000;
 </script>
 {% endblock %}
