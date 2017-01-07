@@ -158,7 +158,7 @@ class Common(Configuration, Ariane):
     )
 
     ACCOUNT_EMAIL_REQUIRED = True
-    ACCOUNT_EMAIL_VERIFICATION = "none"
+    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
     LOGIN_REDIRECT_URL = '/'
 
@@ -217,6 +217,7 @@ class Common(Configuration, Ariane):
         # project apps
         'ariane.apps.core.apps.CoreConfig',
         'ariane.apps.frontend.apps.FrontendConfig',
+        'ariane.apps.users.apps.UsersConfig',
         'ariane.apps.wiki.apps.WikiConfig',
     )
 
