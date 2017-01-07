@@ -1,6 +1,23 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
-  <h1>Landingpage</h1>
+<div id="content">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="row">
+        <div class="small-12 columns">
+          <h1>Landingpage</h1>
+          {% if user.is_authenticated %}
+            <a href="{% url 'ariane' %}">Ariane</a>
+            <a href="#features">Settings</a>
+            <a href="{% url 'account_logout' %}">Logout</a>
+          {% else %}
+            <a href="{% url 'account_login' %}">Login</a>
+            <a href="{% url 'account_signup' %}">Register</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
