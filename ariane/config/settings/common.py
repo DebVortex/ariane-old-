@@ -85,7 +85,7 @@ class Common(Configuration, Ariane):
         }
     }
 
-    ALLOWED_HOSTS = values.ListValue(['*'])
+    ALLOWED_HOSTS = values.ListValue(['ariane.max-brauer.de', '127.0.0.1'])
 
     SITE_ID = values.IntegerValue(1)
 
@@ -134,7 +134,7 @@ class Common(Configuration, Ariane):
         #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
     ])
 
-    MIDDLEWARE_CLASSES = [
+    MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
@@ -143,7 +143,7 @@ class Common(Configuration, Ariane):
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    ]
+    )
 
     AUTHENTICATION_BACKENDS = (
         # Needed to login by username in Django admin, regardless of `allauth`
