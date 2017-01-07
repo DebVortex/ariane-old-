@@ -95,7 +95,7 @@ class Common(Configuration, Ariane):
 
     # Internationalization
     # https://docs.djangoproject.com/en/dev/topics/i18n/
-    LANGUAGE_CODE = values.Value('en-us')
+    LANGUAGE_CODE = values.Value('en-GB')
 
     TIME_ZONE = values.Value('Europe/Berlin')
 
