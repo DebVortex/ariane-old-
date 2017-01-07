@@ -1,6 +1,7 @@
 import os
 
 from configurations import Configuration, values
+from django.utils.translation import ugettext_lazy as _
 
 from .values import AdminsValue
 
@@ -19,7 +20,10 @@ class BaseDir(object):
 class Ariane(object):
     """Ariane configuration class."""
 
-    ARIANE_SUPPORTED_LANGUAGES = values.ListValue(['en-GB'])
+    ARIANE_SUPPORTED_LANGUAGES = values.ListValue([
+        ('en-GB', _("English")),
+        ('de-DE', _("German"))
+    ])
     WIT_ACCESS_TOKENS = values.DictValue()
 
 
