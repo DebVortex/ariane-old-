@@ -5,6 +5,9 @@ from codecs import open
 
 from setuptools import find_packages, setup
 
+from ariane import __version__
+
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -12,6 +15,7 @@ def read(*paths):
     """Build a file path from *paths and return the contents."""
     with open(os.path.join(*paths), 'r', 'utf-8') as f:
         return f.read()
+
 
 extras_require = {}
 
@@ -35,7 +39,7 @@ requires = [
 
 setup(
     name='ariane',
-    version='0.1.0',
+    version=__version__,
     description='A short description of the project.',
     long_description=read(BASE_DIR, 'README.rst'),
     author='Max Brauer <max@max-brauer.de>',
