@@ -21,6 +21,21 @@
   <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
+  {% block messages %}
+    {% for message in messages %}
+    <div class="row align-center closeable">
+      <div class="medium-8 small-12 columns">
+        <div class="border-box">
+          <button class="float-right close-button" type="button">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <p>{{ message|safe }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  {% endblock %}
+
   {% block content %}
   {% endblock %}
 
@@ -30,6 +45,7 @@
 
   <script src="{% static "js/vendor/compiled.js" %}"></script>
   <script src="{% static "js/vendor/responsivevoice.js" %}"></script>
+  <script src="{% static "js/helpers/close-button.js" %}"></script>
   <script src="{% static "js/helpers/lbl.js" %}"></script>
   <script src="{% static "js/helpers/obj-keys.js" %}"></script>
 
