@@ -105,3 +105,9 @@ def wit_access_token(settings, language_code):
 def language_code():
     """Language code used for testing."""
     return 'en-GB'
+
+
+@pytest.fixture
+def other_language_code():
+    """Language code used for testing, currently not set by user."""
+    return 'de-DE'
