@@ -13,6 +13,8 @@
 
 * {
   font-family: 'VT323', monospace;
+  font-size: 18px;
+  line-height: 1;
 }
 
 html, body, #content {
@@ -20,6 +22,52 @@ html, body, #content {
   background-color: #000000;
   overflow: hidden;
   color: $ARIANE_BACKGROUND_INACTIVE;
+}
+
+input {
+  padding: 10px 20px 10px 20px;
+  width: 100%;
+  background: #000000;
+  border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
+  .connected & {
+    border-color: $ARIANE_BACKGROUND;
+  }
+  &[type=checkbox] {
+    width: auto;
+  }
+}
+
+
+ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p {
+  margin-top: 0.5em; margin-bottom: 0.5em;
+}
+
+.scrollable {
+  max-height: 60%;
+  overflow-y: auto;
+  .with-footer-input & {
+    max-height: 50%;
+  }
+}
+
+.border-box {
+  @include border-radius($BASIC_BORDER_RADIUS);
+  border-width: $BASIC_BORDER_SIZE;
+  border-style: solid;;
+  border-color: $ARIANE_BACKGROUND_INACTIVE;
+  margin-top: 1em;
+  padding: 1em;
+  h1 {
+    margin-top: 0;
+  }
+  .connected & {
+    border-color: $ARIANE_BACKGROUND;
+  }
 }
 
 #content {
@@ -33,15 +81,18 @@ html, body, #content {
       opacity: 0;
     }
 
+    &.fullheight {
+      height: 100%;
+      .columns {
+       height: 100%
+      }
+    }
+
     opacity: 1;
-    height: 100%;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
     max-width: initial;
-    .columns {
-      height: 100%
-    }
   }
 }
 
@@ -50,7 +101,7 @@ html, body, #content {
 
   .arc {
     margin: 0 auto;
-    @include border-radius(50%);
+    @include border-radius($ARC_RADIUS);
     padding: 5px;
     border: 5px solid transparent;
     @include transition(border 500ms linear);
@@ -128,7 +179,7 @@ html, body, #content {
     width: 70px;
     height: 70px;
     margin: 0 auto;
-    @include border-radius(50%);
+    @include border-radius($ARC_RADIUS);
     background-color: $ARIANE_BACKGROUND_INACTIVE;
     box-shadow: 0px 0px 85px 15px $ARIANE_BACKGROUND_INACTIVE;
     @include transition(background 1s linear);
@@ -161,18 +212,13 @@ html, body, #content {
 }
 
 #ariane-input {
+  display: none;
   position: absolute;
   bottom: 0;
   width: 100%;
   padding: 1em;
-  input {
-    padding: 10px 20px 10px 20px;
-    margin-top: 4em;
-    width: 100%;
-    background: #000000;
-    border: 1px solid $ARIANE_BACKGROUND_INACTIVE;
-    .connected & {
-      border-color: $ARIANE_BACKGROUND;
-    }
+  input {margin-top: 4em;}
+  .with-footer-input & {
+    display: block;
   }
 }

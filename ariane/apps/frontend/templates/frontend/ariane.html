@@ -40,22 +40,18 @@
 {% endblock %}
 
 {% block content %}
-<div id="content" data-bind="css: {connected: connected, listening: listening, speaking: speaking}">
-  <div class="row show-for-small-only" data-bind="css: {inactive: inactive}">
-    <div class="small-12 columns">
-      ARIANE ON SMALL
-    </div>
-  </div>
-  <div class="row hide-for-small-only" data-bind="css: {inactive: inactive}">
-    <div class="small-3 columns">
+<div id="content" data-bind="css: {connected: connected, listening: listening, speaking: speaking}"
+  {% if debug %}class="with-footer-input"{% endif %}>
+  <div class="row fullheight" data-bind="css: {inactive: inactive}">
+    <div class="medium-3 columns hide-for-small-only">
       <div data-bind="template: { name: leftTemplate, data: leftData }">
       </div>
     </div>
-    <div class="small-6 columns">
+    <div class="medium-6 columns hide-for-small-only">
       <div class="info-text-box" data-bind="lbylText: message"></div>
       <div data-bind="template: { name: centerTemplate, data: centerData }"></div>
     </div>
-    <div class="small-3 columns">
+    <div class="small-12 medium-3 columns">
       <div id="ariane">
         <div class="arc first_arc invis_arc">
           <div class="arc second_arc invis_arc">
@@ -68,12 +64,11 @@
         </div>
       </div>
       <div data-bind="template: { name: rightTemplate, data: rightData }"></div>
+      <div class="info-text-box scrollable show-for-small-only" data-bind="lbylText: message"></div>
     </div>
   </div>
 
-  {% if debug %}
   <form id="ariane-input"><input></form>
-  {% endif %}
 
 </div>
 
