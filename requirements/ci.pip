@@ -1,4 +1,4 @@
 # This file is used for testing on continuous integration servers with tox.
 
 django-coverage-plugin==1.5.0
-tox==2.6.0
+tox==2.7.0
