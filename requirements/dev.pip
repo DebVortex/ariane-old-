@@ -6,7 +6,7 @@
 
 Werkzeug==0.12.1
 bumpversion==0.5.3
-django-debug-toolbar==1.7
+django-debug-toolbar==1.8
 django-template-debug==0.3.5
 envdir==0.7
 flake8==3.3.0
