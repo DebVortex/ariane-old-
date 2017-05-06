@@ -23,7 +23,7 @@ requires = [
     'asgiref==1.1.1',
     'channels==1.1.3',
     'daphne==1.2.0',
-    'Django==1.11',
+    'Django==1.11.1',
     'dj-database-url==0.4.2',
     'django-allauth==0.32.0',
     'django-braces==1.11.0',
