@@ -20,7 +20,7 @@ def read(*paths):
 extras_require = {}
 
 requires = [
-    'asgiref==1.1.1',
+    'asgiref==1.1.2',
     'channels==1.1.3',
     'daphne==1.2.0',
     'Django==1.11.1',
