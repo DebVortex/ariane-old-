@@ -4,7 +4,7 @@
 -r ./test.pip
 -r ./test-local.pip
 
-Werkzeug==0.12.1
+Werkzeug==0.12.2
 bumpversion==0.5.3
 django-debug-toolbar==1.8
 django-template-debug==0.3.5
