@@ -34,7 +34,7 @@ requires = [
     'envdir==0.7',
     'psycopg2==2.7.3',
     'pytz==2017.2',
-    'wit==4.2.0',
+    'wit==4.3.0',
     'wikipedia==1.4.0'
 ]
 
